@@ -24,7 +24,9 @@ public class RangedWeapon : MonoBehaviour,IWeapon
     {
 
         GameObject projectileObject=Instantiate(projectile,transform.position,transform.rotation);
+        projectileObject.SetActive(true);
         projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,0);
+
 
     }
 

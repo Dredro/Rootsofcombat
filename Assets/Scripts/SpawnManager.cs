@@ -5,7 +5,22 @@ using UnityEngine.InputSystem;
 
 public class SpawnManager : MonoBehaviour
 {
-    public List<Vector2> spawnPoints; 
+    public Vector2[] spawnPoints;
+    private Stack<Vector2> spawn;
+
+    private void Start()
+    {
+        ReadSpawnPoints();
+    }
+
+    private void ReadSpawnPoints()
+    {
+        spawn = new Stack<Vector2>();
+        foreach (var spawnPoint in spawnPoints)
+        {
+            spawn.Push(spawnPoint);
+        }
+    }
 
     public void OnPlayerJoined(PlayerInput playerInput) {
         SetPlayerPosition(playerInput.transform);
@@ -13,6 +28,6 @@ public class SpawnManager : MonoBehaviour
 
     void SetPlayerPosition(Transform transform)
     {
-        transform.position = spawnPoints[0];
+        transform.position = spawn.Pop();
     }
 }

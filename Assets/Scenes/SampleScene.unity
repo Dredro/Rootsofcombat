@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 1187795691}
   - component: {fileID: 1187795690}
   - component: {fileID: 1187795689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,6 +516,14 @@ MonoBehaviour:
       - m_Name: 
         m_Id: 552efd66-d347-4323-ae85-32e6bc2de64e
         m_Path: <Gamepad>/start
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 038d0204-333d-40d9-9107-2bddbb9edc2f
+        m_Path: <Keyboard>/space
         m_Interactions: 
         m_Processors: 
         m_Groups: 

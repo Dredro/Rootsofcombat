@@ -100,7 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b05e5011ca15f4291c0c2f6f459e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isGround: 1
+  moveSpeed: 0.5
+  jumpForce: 2
   move: {x: 0, y: 0}
 --- !u!114 &5521720706799619570
 MonoBehaviour:
@@ -114,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: a00aae3e51aa3f841a288bb8c8f0d5d3, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -173,7 +178,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

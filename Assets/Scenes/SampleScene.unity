@@ -440,7 +440,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 795985201}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f515d514ec463cf40bebe8df14f0191f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -842,7 +842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1635077762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,7 +893,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 7131981813671444238, guid: 32f4be74ee03ad841b76ed78de367a19, type: 3}
+  m_PlayerPrefab: {fileID: 5638506209162497356, guid: cd9c4baba1c44c54d9c37533421676f0, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1

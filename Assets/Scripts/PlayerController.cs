@@ -1,32 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
-    public LayerMask layerMask;
-
+  
+    // Input Actions
     private PlayerInput playerInput;
     private InputAction moveAction;
     private InputAction fireAction;
     private InputAction jumpAction;
 
-    
-    public bool isGround;
-
-    private Rigidbody2D rbody2D;
-    public float moveSpeed;
-    public float jumpForce;
+    // Input Actions Value
     private Vector2 move;
     private float jump;
 
+    // Physics Private
+    private bool isGround;
+    private Rigidbody2D rbody2D;
+    private float jumpTimer;
+    private Collider2D coll;
 
+    [Header("Ground Layer")]
+    public LayerMask layerMask;
+    [Header("Permable Layer")]
+    public LayerMask permableLayerMask;
+
+    [Header("Movement")]
+    public float moveSpeed;
+
+    [Header("Jump")]
+    public float jumpHeight;
+    public float jumpDelay;
+    
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
         rbody2D= GetComponent<Rigidbody2D>();
+        coll= GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -34,38 +45,54 @@ public class PlayerController : MonoBehaviour
         OnUpdate();
         GroundCheck();
         Jump();
+        Descent();
     }
     private void FixedUpdate()
     {
         Move();
     }
-    void OnUpdate()
+    private void OnUpdate()
     {
         if(playerInput!= null)
-        {
+        { // Read actions from Input Manager
             moveAction = playerInput.actions["move"];
             fireAction = playerInput.actions["fire"];
             jumpAction = playerInput.actions["jump"];
         }
-
-       move = moveAction.ReadValue<Vector2>();
+        // Set value for Input Actions values
+      move = moveAction.ReadValue<Vector2>();
       jump = jumpAction.ReadValue<float>();
     }
-    void Move()
+   private void Move()
     {
         rbody2D.velocity += new Vector2(move.x * moveSpeed, 0f);
     }
-    void GroundCheck()
+   private void GroundCheck()
     {
-        isGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.1f, layerMask);
+        isGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.01f, layerMask);
     }
-    void Jump()
+
+    private void Jump()
     {
-        if(isGround && jump == 1)
+        if((isGround) && (jump == 1) && (Time.time > jumpTimer))
         {
-           rbody2D.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
+           rbody2D.AddForce(Vector2.up * jumpHeight,ForceMode2D.Impulse);
+           jumpTimer = Time.time + jumpDelay;
         }
     }
-
-
+    private void Descent()
+    {
+        bool permableUp,permableDown;
+        permableUp = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + transform.localScale.y / 2), 0.01f, permableLayerMask);
+        permableDown = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.01f, permableLayerMask);
+        if ((permableDown && move.y < -0.9f)||permableUp)
+        {
+            coll.isTrigger= true;
+        }
+        else
+        {
+            coll.isTrigger = false;
+        }
+    }
+    
 }

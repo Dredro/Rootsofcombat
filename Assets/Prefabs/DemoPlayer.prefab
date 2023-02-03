@@ -103,10 +103,12 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  isGround: 1
+  permableLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
   moveSpeed: 0.5
-  jumpForce: 2
-  move: {x: 0, y: 0}
+  jumpHeight: 15
+  jumpDelay: 0.5
 --- !u!114 &5521720706799619570
 MonoBehaviour:
   m_ObjectHideFlags: 0

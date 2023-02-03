@@ -109,6 +109,7 @@ MonoBehaviour:
   moveSpeed: 0.5
   jumpHeight: 15
   jumpDelay: 0.5
+  objWeapon: {fileID: 0}
 --- !u!114 &5521720706799619570
 MonoBehaviour:
   m_ObjectHideFlags: 0

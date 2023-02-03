@@ -8,5 +8,7 @@ public interface IWeapon
     public  void Fire2();
 
     public  void Fire1();
+
+    public void DisposeWeapon();
     
 }

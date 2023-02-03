@@ -12,10 +12,18 @@ public class RangedWeapon : MonoBehaviour,IWeapon
     public float projectileSpeed=0;
     public float offsetX = 0;
     public float offsetY = 0;
+
+    public void DisposeWeapon()
+    {
+        print("destroyed");
+        Destroy(gameObject);
+
+    }
+
     public void Fire1()
     {
 
-        GameObject projectileObject=Instantiate(projectile,this.transform);
+        GameObject projectileObject=Instantiate(projectile,transform.position,transform.rotation);
         projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,0);
 
     }

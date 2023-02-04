@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
     }
     private void RotateWeapon()
     {
-        if (objWeapon != null)
+        if (objWeapon != null&&curWeapon.GetType()==EnumMeleeRanged.RANGED)
         {
             player.weaponInHand = true;
             float Angle;
@@ -221,8 +221,12 @@ public class PlayerController : MonoBehaviour
         if(curWeapon.GetType()==EnumMeleeRanged.MELEE)
         {
             Vector3 v=curWeapon.GetOffset();
-            objWeapon.transform.position = new Vector3(v.x,v.y,0);
-            
+            if(transform.localRotation.y>0)
+            objWeapon.transform.position =transform.position+ new Vector3(-v.x,v.y,0);
+            else
+                objWeapon.transform.position = transform.position + new Vector3(v.x, v.y, 0);
+            objWeapon.transform.rotation = new Quaternion(0, v.z, 0,0);
+
         }
     }
 

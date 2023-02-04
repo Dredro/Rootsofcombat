@@ -50,7 +50,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
         GameObject projectileObject;
         projectileObject = Instantiate(projectile, barrel.transform.position, Quaternion.Euler(Vector3.forward * randomSpread));
         projectileObject.SetActive(true);
-        projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, randomSpread);
+        projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(new Vector2(projectileSpeed, randomSpread),transform.eulerAngles.z);
         print(curAmmo);
     }
 
@@ -158,5 +158,16 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     void Update()
     {
 
+    }
+    public  Vector2 Rotate( Vector2 v, float degrees)
+    {
+        float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+
+        float tx = v.x;
+        float ty = v.y;
+        v.x = (cos * tx) - (sin * ty);
+        v.y = (sin * tx) + (cos * ty);
+        return v;
     }
 }

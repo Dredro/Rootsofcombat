@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
             i = 1;
         }
         if (move.x < 0)
-        {
+        { 
             Quaternion quaternion = new Quaternion(0, 180, 0, 0);
             transform.localRotation = quaternion;
             a = 180;
@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
         curWeapon.DisposeWeapon();
 
         objWeapon = Instantiate(newWeapon,this.transform);
-        objWeapon.transform.position=transform.position;
+        objWeapon.transform.position=transform.position - Vector3.forward;
         curWeapon = objWeapon.GetComponent<IWeapon>();
     }
 

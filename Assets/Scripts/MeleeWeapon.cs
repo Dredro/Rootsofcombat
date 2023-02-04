@@ -1,13 +1,19 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour,IWeapon
 {
-    public float offsetX = 0;
-    public float offsetY = 0;
-    public float offsetZ = 0;
+    public Vector3 handPoint;
+
+    private Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     public void DisposeWeapon()
     {
         Destroy(gameObject);
@@ -15,7 +21,8 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
 
     public void Fire1()
     {
-        
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        animator.Play("attack",0,0);
     }
 
     public void Fire2()
@@ -25,7 +32,7 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
 
     public Vector3 GetOffset()
     {
-        return new Vector3(offsetX, offsetY, offsetZ);
+        return new Vector3(handPoint.x,handPoint.y,handPoint.z);
     }
 
     public void Release()
@@ -38,15 +45,4 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
         return EnumMeleeRanged.MELEE;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

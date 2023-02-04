@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7727147948149034268}
   - component: {fileID: 7727147948149034271}
   - component: {fileID: 7727147948149034270}
-  - component: {fileID: 7740449767288076432}
   - component: {fileID: 9191612227332880226}
+  - component: {fileID: 335001262}
   m_Layer: 8
   m_Name: zweichander
   m_TagString: Untagged
@@ -99,29 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3c794aa8765d74d8252a9b81505afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetX: 0.21
-  offsetY: -0.17
-  offsetZ: 23
---- !u!95 &7740449767288076432
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7727147948149034265}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 53035d6ed44f2604b98508605f70607a, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  handPoint: {x: 0.18, y: -0.15, z: -11.6}
 --- !u!61 &9191612227332880226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,7 +116,7 @@ BoxCollider2D:
   m_Offset: {x: 0.0068115145, y: 0.34707254}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4908739, y: 0.06308464}
+    pivot: {x: 0.5005779, y: 0.18923697}
     oldSize: {x: 0.32, y: 0.64}
     newSize: {x: 0.32, y: 0.64}
     adaptiveTilingThreshold: 0.5
@@ -148,3 +126,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.10987747, y: 0.40134227}
   m_EdgeRadius: 0
+--- !u!95 &335001262
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727147948149034265}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f14f25e9164f2f54b82c810bd7f2cb5d, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

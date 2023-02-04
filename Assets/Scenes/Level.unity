@@ -2783,7 +2783,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d6622fdd5826d46b54891079b25589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
   weaponsList:
+  - {fileID: 5353684082302415702, guid: 73c2a66d95e36a24991d05ad41d2a4dc, type: 3}
   - {fileID: 5006429161675852166, guid: f8622a527a131d54388415f172ce6d1d, type: 3}
 --- !u!1 &1964063104
 GameObject:
@@ -2917,6 +2919,7 @@ MonoBehaviour:
   secReload: 1
   additionalSpreadBullets: 4
   chargeTime: 10
+  animator: {fileID: 0}
 --- !u!212 &2020957108
 SpriteRenderer:
   m_ObjectHideFlags: 0

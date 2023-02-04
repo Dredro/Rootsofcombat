@@ -32,7 +32,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     [Header("Weapon Type Related Settings")]
     public int additionalSpreadBullets = 4;
     public float chargeTime = 10;//decy sekundy
-
+    public Animator animator;
 
     public void DisposeWeapon()
     {
@@ -120,7 +120,10 @@ public class RangedWeapon : MonoBehaviour, IWeapon
                     if (charges < chargeTime)
                         charges++;
                     print(charges);
-
+                    if (animator != null)
+                    {
+                        animator.SetTrigger("Shot");
+                    }
                     break;
                 default:
                     print("error null weapon type");

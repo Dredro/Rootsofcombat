@@ -133,14 +133,14 @@ MonoBehaviour:
   projectile: {fileID: 6099514660244565169, guid: 9528c9a462f88204ab2f37b7ae58f231, type: 3}
   curAmmo: 1
   maxAmmo: 1
-  projectileSpeed: 0
-  age: 0
+  projectileSpeed: 10
+  age: 2
   firetype: 0
-  spread: 0
-  secBetweenFire: 0.1
-  damage: 0
-  secReload: 1
-  additionalSpreadBullets: 4
+  spread: 1
+  secBetweenFire: 1
+  damage: 50
+  secReload: 5
+  additionalSpreadBullets: 1
   chargeTime: 10
   offsetX: 0.24
   offsetY: 0

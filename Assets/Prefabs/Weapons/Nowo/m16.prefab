@@ -114,6 +114,7 @@ MonoBehaviour:
   offsetX: 0.15
   offsetY: 0
   offsetZ: 0
+  sound: {fileID: 8300000, guid: 6b2a3ea14997cb24384cc247e138e3a0, type: 3}
   animator: {fileID: 0}
 --- !u!1 &8246653710255296745
 GameObject:

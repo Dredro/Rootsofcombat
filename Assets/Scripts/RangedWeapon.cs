@@ -110,13 +110,20 @@ public class RangedWeapon : MonoBehaviour, IWeapon
             {
                 case EnumFiretype.AUTO:
                     Fire();
-
+                    if (audioSource != null)
+                    {
+                        audioSource.PlayOneShot(sound);
+                    }
                     break;
                 case EnumFiretype.SEMI:
                     if (!isHeld)
                     {
                         isHeld = true;
                         Fire();
+                        if (audioSource != null)
+                        {
+                            audioSource.PlayOneShot(sound);
+                        }
                     }
                     break;
                 case EnumFiretype.SPREAD:
@@ -126,7 +133,10 @@ public class RangedWeapon : MonoBehaviour, IWeapon
                         Fire();
                         for (int i = 0; i < additionalSpreadBullets; i++)
                             StartCoroutine(SpreadCooldown(0.01f * i));
-
+                        if (audioSource != null)
+                        {
+                            audioSource.PlayOneShot(sound);
+                        }
 
                     }
                     break;

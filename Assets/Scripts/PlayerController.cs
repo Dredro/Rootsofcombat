@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
     }
     private void GroundCheck()
     {
-        isGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.01f, layerMask);
+        isGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.05f, layerMask);
     }
 
     private void Jump()
@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, 0.5f, permableLayerMask);
         RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, permableLayerMask);
-        if ((hitUp.collider != null) && (move.y > 0.9f) || (hitDown.collider != null) && (move.y < -0.9f))
+        if ((hitUp.collider != null) && (jump==1) || (hitDown.collider != null) && (move.y < -0.9f))
         {
             coll.isTrigger = true;
         }
@@ -208,7 +208,9 @@ public class PlayerController : MonoBehaviour
         if (fire == 1)
         {
             if (curWeapon != null)
+            {
                 curWeapon.Fire1();
+            }
         }
         else
         {
@@ -230,14 +232,14 @@ public class PlayerController : MonoBehaviour
             Vector3 v=curWeapon.GetOffset();
             if(transform.localRotation.y>0)
             {
-                objWeapon.transform.position = transform.position + new Vector3(-v.x, v.y, 0);
+                objWeapon.transform.position = transform.position + new Vector3(-v.x, v.y, -1);
                 objWeapon.transform.eulerAngles = new Vector3(0, 0, -v.z);
             }
             
             else
             {
 
-                objWeapon.transform.position = transform.position + new Vector3(v.x, v.y, 0);
+                objWeapon.transform.position = transform.position + new Vector3(v.x, v.y, -1);
                 objWeapon.transform.eulerAngles = new Vector3(0, 0, v.z);
 
             }

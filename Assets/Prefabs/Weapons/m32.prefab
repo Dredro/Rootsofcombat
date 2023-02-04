@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5006429161675852167}
   - component: {fileID: 5006429161675852164}
   - component: {fileID: 1377747321128148699}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: m32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,9 @@ MonoBehaviour:
   secReload: 1
   additionalSpreadBullets: 4
   chargeTime: 10
+  offsetX: 0
+  offsetY: 0
+  offsetZ: 0
   animator: {fileID: 0}
 --- !u!1 &5955191788058545478
 GameObject:
@@ -121,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9086814966247207695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

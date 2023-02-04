@@ -55,7 +55,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
         projectileObject = Instantiate(projectile, barrel.transform.position, Quaternion.Euler(Vector3.forward * randomSpread));
         projectileObject.SetActive(true);
         projectileObject.transform.eulerAngles = transform.eulerAngles;
-
+        projectileObject.GetComponent<Projectile>().SetForceDamage(projectileSpeed, damage);
         if (GetComponentInParent<PlayerController>().left == false)
         {
             projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(new Vector2(projectileSpeed, randomSpread), transform.eulerAngles.z);

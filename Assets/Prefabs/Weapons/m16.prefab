@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6818586148512799139}
   - component: {fileID: 5362338402036848756}
   - component: {fileID: 9184317816352080424}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: m16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   firetype: 1
   spread: 0
   secBetweenFire: 0.1
-  damage: 0
+  damage: 2000
   secReload: 2
   additionalSpreadBullets: 4
   chargeTime: 10
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4432713025614705132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

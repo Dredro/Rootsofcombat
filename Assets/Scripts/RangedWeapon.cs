@@ -39,6 +39,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     public float offsetY = 0;
     public float offsetZ = 0;
 
+    public Animator animator;
 
     public void DisposeWeapon()
     {
@@ -126,7 +127,10 @@ public class RangedWeapon : MonoBehaviour, IWeapon
                     if (charges < chargeTime)
                         charges++;
                     print(charges);
-
+                    if (animator != null)
+                    {
+                        animator.SetTrigger("Shot");
+                    }
                     break;
                 default:
                     print("error null weapon type");

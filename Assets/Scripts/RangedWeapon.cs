@@ -54,17 +54,24 @@ public class RangedWeapon : MonoBehaviour, IWeapon
         GameObject projectileObject;
         projectileObject = Instantiate(projectile, barrel.transform.position, Quaternion.Euler(Vector3.forward * randomSpread));
         projectileObject.SetActive(true);
-        
-        if(GetComponentInParent<Transform>().rotation.y==0)
-        projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(new Vector2(projectileSpeed, randomSpread),transform.eulerAngles.z);
+        projectileObject.transform.eulerAngles = transform.eulerAngles;
+
+        if (GetComponentInParent<PlayerController>().left == false)
+        {
+
+            print("r");
+            projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(new Vector2(projectileSpeed, randomSpread), transform.eulerAngles.z);
+        }
         else
-        projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(Rotate(new Vector2(projectileSpeed, randomSpread), -transform.eulerAngles.z),180);
-        print(GetComponentInParent<Transform>().rotation.y);
+        {
+            print("l");
+            projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(Rotate(new Vector2(projectileSpeed, randomSpread), -transform.eulerAngles.z), 180);
+        }
     }
 
     public void Fire1()
     {
-      
+
         IEnumerator WeaponCooldown(float time)
         {
             isCooldown = true;
@@ -76,10 +83,10 @@ public class RangedWeapon : MonoBehaviour, IWeapon
         }
         IEnumerator ReloadCooldown(float time)
         {
-            isReload= true;
+            isReload = true;
             yield return new WaitForSeconds(time);
             curAmmo = maxAmmo;
-            isReload= false;
+            isReload = false;
 
         }
         IEnumerator SpreadCooldown(float time)
@@ -117,8 +124,8 @@ public class RangedWeapon : MonoBehaviour, IWeapon
                     {
                         isHeld = true;
                         Fire();
-                        for(int i=0;i<additionalSpreadBullets;i++)
-                        StartCoroutine(SpreadCooldown(0.01f*i));
+                        for (int i = 0; i < additionalSpreadBullets; i++)
+                            StartCoroutine(SpreadCooldown(0.01f * i));
 
 
                     }
@@ -150,7 +157,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     public void Release()
     {
         isHeld = false;
-        if(charges>chargeTime-1)
+        if (charges > chargeTime - 1)
         {
 
             Fire();
@@ -170,7 +177,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     {
 
     }
-    public  Vector2 Rotate( Vector2 v, float degrees)
+    public Vector2 Rotate(Vector2 v, float degrees)
     {
         float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
         float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
@@ -189,6 +196,6 @@ public class RangedWeapon : MonoBehaviour, IWeapon
 
     public Vector3 GetOffset()
     {
-        return new Vector3(offsetX,offsetY,offsetZ);
+        return new Vector3(offsetX, offsetY, offsetZ);
     }
 }

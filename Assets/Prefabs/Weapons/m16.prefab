@@ -111,6 +111,10 @@ MonoBehaviour:
   secReload: 2
   additionalSpreadBullets: 4
   chargeTime: 10
+  offsetX: 0.15
+  offsetY: 0
+  offsetZ: 0
+  animator: {fileID: 0}
 --- !u!1 &8246653710255296745
 GameObject:
   m_ObjectHideFlags: 0

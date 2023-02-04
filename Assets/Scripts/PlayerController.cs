@@ -54,8 +54,9 @@ public class PlayerController : MonoBehaviour
     //Math
     float a;
     int i = 1;
-
-
+    
+    public bool left=false;
+    
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -141,11 +142,13 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion quaternion = new Quaternion(0, 0, 0, 0);
             transform.localRotation = quaternion;
+            left = false;
             a = 0;
             i = 1;
         }
         if (move.x < 0)
         {
+            left= true;
             Quaternion quaternion = new Quaternion(0, 180, 0, 0);
             transform.localRotation = quaternion;
             a = 180;

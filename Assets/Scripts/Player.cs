@@ -32,4 +32,8 @@ public class Player : MonoBehaviour
             currentRenderer.sprite = skinWithHand[gameManager.currentLevel];
         }
     }
+    public void Hit(Vector2 vel)
+    {
+        GetComponent<Rigidbody2D>().velocity += vel;
+    }
 }

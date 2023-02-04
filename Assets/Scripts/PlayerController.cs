@@ -54,8 +54,9 @@ public class PlayerController : MonoBehaviour
     //Math
     float a;
     int i = 1;
-
-
+    
+    public bool left=false;
+    
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -141,11 +142,13 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion quaternion = new Quaternion(0, 0, 0, 0);
             transform.localRotation = quaternion;
+            left = false;
             a = 0;
             i = 1;
         }
         if (move.x < 0)
         {
+            left= true;
             Quaternion quaternion = new Quaternion(0, 180, 0, 0);
             transform.localRotation = quaternion;
             a = 180;
@@ -218,16 +221,22 @@ public class PlayerController : MonoBehaviour
         objWeapon = Instantiate(newWeapon, this.transform);
         objWeapon.transform.position = transform.position - Vector3.forward;
         curWeapon = objWeapon.GetComponent<IWeapon>();
-        if(curWeapon.GetType()==EnumMeleeRanged.MELEE)
-        {
+       
             Vector3 v=curWeapon.GetOffset();
             if(transform.localRotation.y>0)
-            objWeapon.transform.position =transform.position+ new Vector3(-v.x,v.y,0);
+            {
+                objWeapon.transform.position = transform.position + new Vector3(-v.x, v.y, 0);
+                objWeapon.transform.eulerAngles = new Vector3(0, 0, -v.z);
+            }
+            
             else
-                objWeapon.transform.position = transform.position + new Vector3(v.x, v.y, 0);
-            objWeapon.transform.rotation = new Quaternion(0, v.z, 0,0);
+            {
 
-        }
+                objWeapon.transform.position = transform.position + new Vector3(v.x, v.y, 0);
+                objWeapon.transform.eulerAngles = new Vector3(0, 0, v.z);
+
+            }
+        
     }
 
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 975738608265361682}
   - component: {fileID: 975738608265361693}
   - component: {fileID: 7374957162318505716}
+  - component: {fileID: -7113188401464350239}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -211,6 +212,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-7113188401464350239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975738608265361691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca9b8d86733bc244ba48e7a5e41f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  weaponInHand: 0
+  skinWithHand:
+  - {fileID: 21300000, guid: cb768f7618c301e4984de3f6024e0db5, type: 3}
+  - {fileID: 21300000, guid: fa588f26d3c0a9943b55febefd47dbce, type: 3}
+  - {fileID: 21300000, guid: 3922317e4e5210e4fb329e1fa76f1abb, type: 3}
+  - {fileID: 21300000, guid: a2a1ef2c66f375a429e389ff1b4c56c4, type: 3}
+  - {fileID: 21300000, guid: 1116229917016174489b93d3d746ad0d, type: 3}
+  skinWithoutHand:
+  - {fileID: 21300000, guid: fe2b729f90103f2439b8e915fcba0615, type: 3}
+  - {fileID: 21300000, guid: f1d7ac2337a147a4ba7173a6a95ea5d4, type: 3}
+  - {fileID: 21300000, guid: e2ac961fd79a75248a49b92c6ae794dc, type: 3}
+  - {fileID: 21300000, guid: bc3d9c31590903448935f9c40a5c732b, type: 3}
+  - {fileID: 21300000, guid: bf67cece3a9729e4398aa04bf8b35b0c, type: 3}
 --- !u!1 &9006774702190350431
 GameObject:
   m_ObjectHideFlags: 0

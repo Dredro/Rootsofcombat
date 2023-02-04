@@ -102,7 +102,7 @@ MonoBehaviour:
   projectile: {fileID: 40080474693376239, guid: 14d6cca945ce5b046bf7e46663373704, type: 3}
   curAmmo: 0
   maxAmmo: 60
-  projectileSpeed: 10
+  projectileSpeed: 100
   age: 0
   firetype: 1
   spread: 1
@@ -111,8 +111,7 @@ MonoBehaviour:
   secReload: 1
   additionalSpreadBullets: 4
   chargeTime: 10
-  offsetX: 0
-  offsetY: 0
+  animator: {fileID: 0}
 --- !u!1 &5955191788058545478
 GameObject:
   m_ObjectHideFlags: 0

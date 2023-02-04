@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     }
     public void Reset()
     {
+        health = 100;
         lastShotBy = GetComponent<PlayerController>().PlayerColor;
     }
     private void Update()

@@ -6,7 +6,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
  public class InGamePlayer
 {
-    public GameObject brazil;
+
     public EnumPlayerColor color;
     public Player player;
     public int frags;
@@ -26,6 +26,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject brazil;
+    public List<GameObject> SpawnPoints;
     public int currentLevel=0;
 
     public List<InGamePlayer> lobby=new List<InGamePlayer>();
@@ -77,7 +79,13 @@ public class GameManager : MonoBehaviour
         foreach (InGamePlayer i in lobby)
         {
             if(i.color==victim)
-            i.deaths++;
+            {
+                i.deaths++;
+                i.player.Reset();
+                GameObject obj = i.player.gameObject;
+                StartCoroutine(Respawn(2, obj));
+
+            }
         }
     }
     public void PlayerFellOff()
@@ -95,5 +103,18 @@ public class GameManager : MonoBehaviour
         {
             print(i.color+" | Kills: "+i.frags+" | Deaths: "+i.deaths);
         }
+    }
+    IEnumerator Respawn(float time,GameObject obj)
+    {
+        obj.transform.position=brazil.transform.position;
+        yield return new WaitForSeconds(time);
+        obj.transform.position=ChooseSpawn().transform.position; 
+
+
+    }
+    private GameObject ChooseSpawn()
+    {
+        int i = Random.Range(0,SpawnPoints.Count);
+        return SpawnPoints[i];
     }
 }

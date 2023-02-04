@@ -133,6 +133,10 @@ public class PlayerController : MonoBehaviour
                 objWeapon.GetComponent<SpriteRenderer>().flipY = true;
             }*/
         }
+        else
+        {
+            player.weaponInHand = false;
+        }
     }
     private void Move()
     {

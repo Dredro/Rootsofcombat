@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("backspace"))
         {
             ChangeWeapon(GameManager.Instance.weaponsList[0]);
-            print("a");
         }
     }
     private void FixedUpdate()
@@ -198,6 +197,10 @@ public class PlayerController : MonoBehaviour
         {
             if (curWeapon != null)
                 curWeapon.Fire1();
+        }else
+        {
+            if (curWeapon != null)
+                curWeapon.Release();
         }
         
     }

@@ -1,32 +1,133 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class RangedWeapon : MonoBehaviour,IWeapon
+public class RangedWeapon : MonoBehaviour, IWeapon
 {
+
+
+    private bool isHeld = false;
+    private bool isCooldown = false;
+    private bool isReload = false;
+    private int charges = 0;
+
+    [Header("Objects")]
+    public GameObject barrel;
     public GameObject projectile;
-    public int maxAmmo=0;
+
+    [Header("Ammunition")]
+    public float curAmmo = 0;
+    public int maxAmmo = 1;
+    public float projectileSpeed = 0;
+
+    [Header("Weapon Stats")]
     public EnumAge age;
     public EnumFiretype firetype;
-    public float spread=0;
-    public float projectileSpeed=0;
+    public float spread = 0;
+    public float secBetweenFire = 0.1f;
+    public float damage = 0;
+    public float secReload = 1;
+
+    [Header("Weapon Type Related Settings")]
+    public int additionalSpreadBullets = 4;
+    public float chargeTime = 10;//decy sekundy
+
+    [Header("Offsets")]
     public float offsetX = 0;
     public float offsetY = 0;
 
     public void DisposeWeapon()
     {
-        print("destroyed");
         Destroy(gameObject);
 
+    }
+    private void Fire()
+    {
+
+        curAmmo--;
+        float randomSpread = Random.Range(-spread, spread);
+        GameObject projectileObject;
+        projectileObject = Instantiate(projectile, barrel.transform.position, Quaternion.Euler(Vector3.forward * randomSpread));
+        projectileObject.SetActive(true);
+        projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, randomSpread);
+        print(curAmmo);
     }
 
     public void Fire1()
     {
+      
+        IEnumerator WeaponCooldown(float time)
+        {
+            isCooldown = true;
 
-        GameObject projectileObject=Instantiate(projectile,transform.position,transform.rotation);
-        projectileObject.SetActive(true);
-        projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,0);
+            yield return new WaitForSeconds(time);
 
+            isCooldown = false;
+
+        }
+        IEnumerator ReloadCooldown(float time)
+        {
+            isReload= true;
+            yield return new WaitForSeconds(time);
+            curAmmo = maxAmmo;
+            isReload= false;
+
+        }
+        IEnumerator SpreadCooldown(float time)
+        {
+            yield return new WaitForSeconds(time);
+            Fire();
+
+        }
+
+
+
+        if (curAmmo < 1)
+        {
+            if (!isReload)
+                StartCoroutine(ReloadCooldown(secReload));
+        }
+        else
+        if (!isCooldown)
+        {
+            switch (firetype)
+            {
+                case EnumFiretype.AUTO:
+                    Fire();
+
+                    break;
+                case EnumFiretype.SEMI:
+                    if (!isHeld)
+                    {
+                        isHeld = true;
+                        Fire();
+                    }
+                    break;
+                case EnumFiretype.SPREAD:
+                    if (!isHeld)
+                    {
+                        isHeld = true;
+                        Fire();
+                        for(int i=0;i<additionalSpreadBullets;i++)
+                        StartCoroutine(SpreadCooldown(0.01f*i));
+
+
+                    }
+                    break;
+                case EnumFiretype.CHARGED:
+                    if (charges < chargeTime)
+                        charges++;
+                    print(charges);
+
+                    break;
+                default:
+                    print("error null weapon type");
+                    break;
+            }
+            StartCoroutine(WeaponCooldown(secBetweenFire));
+
+        }
 
     }
 
@@ -35,15 +136,27 @@ public class RangedWeapon : MonoBehaviour,IWeapon
         throw new System.NotImplementedException();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Release()
     {
-        
+        isHeld = false;
+        if(charges>chargeTime-1)
+        {
+
+            Fire();
+        }
+        charges = 0;
+
+    }
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        curAmmo = maxAmmo;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

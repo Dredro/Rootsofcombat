@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetFloat("speed", Mathf.Abs(move.x));
         rbody2D.velocity = new Vector2(move.x * moveSpeed, rbody2D.velocity.y);
-        if (move.x > 0)
+        if (move.x > 0 || rotate.x>0)
         {
             Quaternion quaternion = new Quaternion(0, 0, 0, 0);
             transform.localRotation = quaternion;
@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
             a = 0;
             i = 1;
         }
-        if (move.x < 0)
+        if (move.x < 0 || rotate.x<0)
         {
             left= true;
             Quaternion quaternion = new Quaternion(0, 180, 0, 0);
@@ -218,7 +218,8 @@ public class PlayerController : MonoBehaviour
         if (curWeapon != null)
             curWeapon.DisposeWeapon();
 
-        objWeapon = Instantiate(newWeapon, this.transform);
+        objWeapon = Instantiate(newWeapon, transform.Find("body"));
+
         objWeapon.transform.position = transform.position - Vector3.forward;
         curWeapon = objWeapon.GetComponent<IWeapon>();
        

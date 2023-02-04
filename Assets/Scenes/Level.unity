@@ -5712,6 +5712,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4334417136413817384, guid: 5bb759872e60f4c4b8a39fe749d3b2cd, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4334417136413817387, guid: 5bb759872e60f4c4b8a39fe749d3b2cd, type: 3}
       propertyPath: m_Name
       value: rlauncher

@@ -39,6 +39,9 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     public float offsetY = 0;
     public float offsetZ = 0;
 
+    [Header("Audio")]
+    public AudioClip sound;
+    private AudioSource audioSource;
     public Animator animator;
 
     public void DisposeWeapon()
@@ -135,6 +138,10 @@ public class RangedWeapon : MonoBehaviour, IWeapon
                     {
                         animator.SetTrigger("Shot");
                     }
+                    if (audioSource != null)
+                    {
+                        audioSource.PlayOneShot(sound);
+                    }
                     break;
                 default:
                     print("error null weapon type");
@@ -167,6 +174,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     void Awake()
     {
         curAmmo = maxAmmo;
+        audioSource = transform.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

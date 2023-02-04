@@ -10,5 +10,7 @@ public interface IWeapon
     public  void Fire1();
 
     public void DisposeWeapon();
+
+    public void Release();
     
 }

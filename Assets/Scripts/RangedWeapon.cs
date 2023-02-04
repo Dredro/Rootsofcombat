@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class RangedWeapon : MonoBehaviour,IWeapon
 {
+
+    
+    private bool isHeld = false;
+
     public GameObject projectile;
     public int maxAmmo=0;
     public EnumAge age;
@@ -12,27 +16,51 @@ public class RangedWeapon : MonoBehaviour,IWeapon
     public float projectileSpeed=0;
     public float offsetX = 0;
     public float offsetY = 0;
+    public float rateOfFire = 0;
 
     public void DisposeWeapon()
     {
-        print("destroyed");
         Destroy(gameObject);
 
     }
 
     public void Fire1()
     {
+        GameObject projectileObject;
 
-        GameObject projectileObject=Instantiate(projectile,transform.position,transform.rotation);
-        projectileObject.SetActive(true);
-        projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,0);
+        switch (firetype) 
+        {
+            case EnumFiretype.AUTO:
+                
+                projectileObject = Instantiate(projectile, transform.position, transform.rotation);
+                projectileObject.SetActive(true);
+                projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0);
+                break;
+            case EnumFiretype.SEMI:
+                if (!isHeld)
+                {
+                    isHeld = true;
+                    projectileObject = Instantiate(projectile, transform.position, transform.rotation);
+                    projectileObject.SetActive(true);
+                    projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0);
+                }
+                    break;
 
+            default:
+                print("error null weapon type");
+                break;
+        }
 
     }
 
     public void Fire2()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void Release()
+    {
+        isHeld = false;
     }
 
     // Start is called before the first frame update

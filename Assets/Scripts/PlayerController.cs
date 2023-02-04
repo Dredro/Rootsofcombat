@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEditor.Tilemaps;
+using Assets.Scripts;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -47,12 +48,12 @@ public class PlayerController : MonoBehaviour
     public GameObject objWeapon;
     public IWeapon curWeapon;
     float a;
-    int i=1;
- 
+    int i = 1;
+
 
     private void Start()
     {
-        spriteRenderer= GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         rbody2D = GetComponent<Rigidbody2D>();
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         OnUpdate();
         GroundCheck();
-        
+
         Descent();
         Fire();
 
@@ -99,33 +100,37 @@ public class PlayerController : MonoBehaviour
     }
     private void RotateWeapon()
     {
-        if (objWeapon != null)
+        if (curWeapon.GetType() == EnumMeleeRanged.RANGED)
         {
-            float Angle;
-            Quaternion quaternion;
-
-
-
-            if ((rotate.x * i > 0 && rotate.y > 0) || (rotate.x * i > 0 && rotate.y < 0))
+            if (objWeapon != null)
             {
-                Angle = Mathf.Atan2(rotate.y, i * rotate.x);
-                Angle = Angle * Mathf.Rad2Deg;
-                quaternion = Quaternion.Euler(0, a, Angle);
-                objWeapon.transform.rotation = quaternion;
+                float Angle;
+                Quaternion quaternion;
+
+
+
+                if ((rotate.x * i > 0 && rotate.y > 0) || (rotate.x * i > 0 && rotate.y < 0))
+                {
+                    Angle = Mathf.Atan2(rotate.y, i * rotate.x);
+                    Angle = Angle * Mathf.Rad2Deg;
+                    quaternion = Quaternion.Euler(0, a, Angle);
+                    objWeapon.transform.rotation = quaternion;
+                }
+
+
+
+
+
+                /*if((objWeapon.transform.eulerAngles.z < 90 && objWeapon.transform.eulerAngles.z >=0)||(objWeapon.transform.eulerAngles.z < 360 && objWeapon.transform.eulerAngles.z > 270))
+                {
+                    objWeapon.GetComponent<SpriteRenderer>().flipY = false;
+                }
+                else
+                {
+                    objWeapon.GetComponent<SpriteRenderer>().flipY = true;
+                }*/
             }
 
-
-
-
-
-            /*if((objWeapon.transform.eulerAngles.z < 90 && objWeapon.transform.eulerAngles.z >=0)||(objWeapon.transform.eulerAngles.z < 360 && objWeapon.transform.eulerAngles.z > 270))
-            {
-                objWeapon.GetComponent<SpriteRenderer>().flipY = false;
-            }
-            else
-            {
-                objWeapon.GetComponent<SpriteRenderer>().flipY = true;
-            }*/
         }
     }
     private void Move()
@@ -143,23 +148,23 @@ public class PlayerController : MonoBehaviour
             i = 1;
         }
         if (move.x < 0)
-        { 
+        {
             Quaternion quaternion = new Quaternion(0, 180, 0, 0);
             transform.localRotation = quaternion;
             a = 180;
             i = -1;
             // spriteBody.flipX = false;
             // spriteRenderer.flipX = false;
-           // objWeapon.GetComponent<SpriteRenderer>().flipX = true;
+            // objWeapon.GetComponent<SpriteRenderer>().flipX = true;
         }
-        
-        
+
+
     }
     private void GroundCheck()
     {
         isGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.01f, layerMask);
     }
-    
+
     private void Jump()
     {
         if ((isGround) && (jump == 1) && (Time.time > jumpTimer))
@@ -174,7 +179,7 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, 0.5f, permableLayerMask);
         RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, permableLayerMask);
-        if ((hitUp.collider != null)&&(move.y > 0.9f) || (hitDown.collider != null) && (move.y < -0.9f))
+        if ((hitUp.collider != null) && (move.y > 0.9f) || (hitDown.collider != null) && (move.y < -0.9f))
         {
             coll.isTrigger = true;
         }
@@ -183,16 +188,16 @@ public class PlayerController : MonoBehaviour
             coll.isTrigger = false;
         }
 
-       /* permableUp = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + transform.localScale.y * 0.32f), 0.15f, permableLayerMask);
-        permableDown = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y * 0.32f), 0.2f, permableLayerMask);
-        if ((permableDown && move.y < -0.9f)||permableUp)
-        {
-            coll.isTrigger = true;
-        }
-        else
-        {
-            coll.isTrigger = false;
-        }*/
+        /* permableUp = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + transform.localScale.y * 0.32f), 0.15f, permableLayerMask);
+         permableDown = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y * 0.32f), 0.2f, permableLayerMask);
+         if ((permableDown && move.y < -0.9f)||permableUp)
+         {
+             coll.isTrigger = true;
+         }
+         else
+         {
+             coll.isTrigger = false;
+         }*/
     }
     private void Fire()
     {
@@ -200,21 +205,28 @@ public class PlayerController : MonoBehaviour
         {
             if (curWeapon != null)
                 curWeapon.Fire1();
-        }else
+        }
+        else
         {
             if (curWeapon != null)
                 curWeapon.Release();
         }
-        
+
     }
     public void ChangeWeapon(GameObject newWeapon)
     {
-        if(curWeapon!=null)
-        curWeapon.DisposeWeapon();
+        if (curWeapon != null)
+            curWeapon.DisposeWeapon();
 
-        objWeapon = Instantiate(newWeapon,this.transform);
-        objWeapon.transform.position=transform.position - Vector3.forward;
+        objWeapon = Instantiate(newWeapon, this.transform);
+        objWeapon.transform.position = transform.position - Vector3.forward;
         curWeapon = objWeapon.GetComponent<IWeapon>();
+        if(curWeapon.GetType()==EnumMeleeRanged.MELEE)
+        {
+            Vector3 v=curWeapon.GetOffset();
+            objWeapon.transform.position = new Vector3(v.x,v.y,0);
+            
+        }
     }
 
 }

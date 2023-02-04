@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     
     IEnumerator DelayCoroutine()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.02f);
         this.AddComponent<BoxCollider2D>();
         yield return new WaitForSeconds(2);
         Destroy(gameObject);

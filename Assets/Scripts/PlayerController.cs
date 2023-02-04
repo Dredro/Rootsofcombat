@@ -99,31 +99,34 @@ public class PlayerController : MonoBehaviour
     }
     private void RotateWeapon()
     {
-        float Angle;
-        Quaternion quaternion;
-        
-
-       
-       if((rotate.x*i > 0 && rotate.y > 0)||(rotate.x*i>0&&rotate.y<0))
+        if (objWeapon != null)
         {
-            Angle = Mathf.Atan2(rotate.y, i * rotate.x);
-            Angle = Angle * Mathf.Rad2Deg;
-            quaternion = Quaternion.Euler(0, a, Angle);
-            objWeapon.transform.rotation = quaternion;
+            float Angle;
+            Quaternion quaternion;
+
+
+
+            if ((rotate.x * i > 0 && rotate.y > 0) || (rotate.x * i > 0 && rotate.y < 0))
+            {
+                Angle = Mathf.Atan2(rotate.y, i * rotate.x);
+                Angle = Angle * Mathf.Rad2Deg;
+                quaternion = Quaternion.Euler(0, a, Angle);
+                objWeapon.transform.rotation = quaternion;
+            }
+
+
+
+
+
+            /*if((objWeapon.transform.eulerAngles.z < 90 && objWeapon.transform.eulerAngles.z >=0)||(objWeapon.transform.eulerAngles.z < 360 && objWeapon.transform.eulerAngles.z > 270))
+            {
+                objWeapon.GetComponent<SpriteRenderer>().flipY = false;
+            }
+            else
+            {
+                objWeapon.GetComponent<SpriteRenderer>().flipY = true;
+            }*/
         }
-       
-
-       
-
-
-        /*if((objWeapon.transform.eulerAngles.z < 90 && objWeapon.transform.eulerAngles.z >=0)||(objWeapon.transform.eulerAngles.z < 360 && objWeapon.transform.eulerAngles.z > 270))
-        {
-            objWeapon.GetComponent<SpriteRenderer>().flipY = false;
-        }
-        else
-        {
-            objWeapon.GetComponent<SpriteRenderer>().flipY = true;
-        }*/
     }
     private void Move()
     {

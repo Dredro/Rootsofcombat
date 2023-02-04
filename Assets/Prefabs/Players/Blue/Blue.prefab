@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b05e5011ca15f4291c0c2f6f459e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerColor: 1
   spriteBody: {fileID: 520422405844799964}
   rotate: {x: 0, y: 0}
   layerMask:

@@ -46,6 +46,11 @@ public class PlayerController : MonoBehaviour
     [Header("Current Weapon")]
     public GameObject objWeapon;
     public IWeapon curWeapon;
+
+    //Player
+    private Player player;
+
+    //Math
     float a;
     int i=1;
  
@@ -57,6 +62,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         rbody2D = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
@@ -101,11 +107,9 @@ public class PlayerController : MonoBehaviour
     {
         if (objWeapon != null)
         {
+            player.weaponInHand = true;
             float Angle;
             Quaternion quaternion;
-
-
-
             if ((rotate.x * i > 0 && rotate.y > 0) || (rotate.x * i > 0 && rotate.y < 0))
             {
                 Angle = Mathf.Atan2(rotate.y, i * rotate.x);
@@ -114,18 +118,10 @@ public class PlayerController : MonoBehaviour
                 objWeapon.transform.rotation = quaternion;
             }
 
-
-
-
-
-            /*if((objWeapon.transform.eulerAngles.z < 90 && objWeapon.transform.eulerAngles.z >=0)||(objWeapon.transform.eulerAngles.z < 360 && objWeapon.transform.eulerAngles.z > 270))
-            {
-                objWeapon.GetComponent<SpriteRenderer>().flipY = false;
-            }
-            else
-            {
-                objWeapon.GetComponent<SpriteRenderer>().flipY = true;
-            }*/
+        }
+        else
+        {
+            player.weaponInHand=false;
         }
     }
     private void Move()
@@ -134,9 +130,6 @@ public class PlayerController : MonoBehaviour
         rbody2D.velocity = new Vector2(move.x * moveSpeed, rbody2D.velocity.y);
         if (move.x > 0)
         {
-            //  spriteBody.flipX = true;
-            //spriteRenderer.flipX= true;
-            // objWeapon.GetComponent<SpriteRenderer>().flipX = false;
             Quaternion quaternion = new Quaternion(0, 0, 0, 0);
             transform.localRotation = quaternion;
             a = 0;
@@ -148,9 +141,6 @@ public class PlayerController : MonoBehaviour
             transform.localRotation = quaternion;
             a = 180;
             i = -1;
-            // spriteBody.flipX = false;
-            // spriteRenderer.flipX = false;
-           // objWeapon.GetComponent<SpriteRenderer>().flipX = true;
         }
         
         

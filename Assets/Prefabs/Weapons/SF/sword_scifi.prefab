@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3c794aa8765d74d8252a9b81505afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handPoint: {x: 0.22, y: -0.08, z: -17.35}
+  handPoint: {x: 0.22, y: -0.08, z: -20.35}
 --- !u!95 &1632733506
 Animator:
   serializedVersion: 5

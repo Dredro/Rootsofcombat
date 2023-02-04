@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    private EnumPlayerColor player;
     public float force = 0;
     public float damage = 0;
     public EnumAmmotype ammotype;
@@ -14,8 +15,9 @@ public class Projectile : MonoBehaviour
     {
         StartCoroutine(DelayCoroutine());
     }
-    public void SetForceDamage(float force,float damage)
+    public void Set(float force,float damage,EnumPlayerColor player)
     {
+        this.player= player;
         this.force=force;
         this.damage=damage;
     }
@@ -35,8 +37,9 @@ public class Projectile : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
+
         if (col.gameObject.layer == 9)
-            col.gameObject.GetComponent<Player>().Hit(new Vector2(force,0),damage);
+            col.gameObject.GetComponent<Player>().Hit(new Vector2(force,0),damage,player);
         Destroy(gameObject);
     }
 }

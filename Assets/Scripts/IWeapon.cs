@@ -15,5 +15,7 @@ public interface IWeapon
     public void Release();
     public EnumMeleeRanged GetType();
     public Vector3 GetOffset();
+    public EnumPlayerColor GetPlayer();
+    public void SetPlayer(EnumPlayerColor player);
     
 }

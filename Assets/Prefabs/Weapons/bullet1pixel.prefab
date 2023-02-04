@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3321055542957980860}
   - component: {fileID: 4088714321566283225}
   - component: {fileID: 3251366419985353291}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: bullet1pixel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0.05

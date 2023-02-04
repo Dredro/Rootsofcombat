@@ -7,7 +7,7 @@ using UnityEngine;
 public class RangedWeapon : MonoBehaviour, IWeapon
 {
 
-
+    private EnumPlayerColor player;
     private bool isHeld = false;
     private bool isCooldown = false;
     private bool isReload = false;
@@ -58,7 +58,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
         projectileObject = Instantiate(projectile, barrel.transform.position, Quaternion.Euler(Vector3.forward * randomSpread));
         projectileObject.SetActive(true);
         projectileObject.transform.eulerAngles = transform.eulerAngles;
-        projectileObject.GetComponent<Projectile>().SetForceDamage(projectileSpeed, damage);
+        projectileObject.GetComponent<Projectile>().Set(projectileSpeed, damage,player);
         if (GetComponentInParent<PlayerController>().left == false)
         {
             projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(new Vector2(projectileSpeed, randomSpread), transform.eulerAngles.z);
@@ -202,5 +202,15 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     public Vector3 GetOffset()
     {
         return new Vector3(offsetX, offsetY, offsetZ);
+    }
+
+    public EnumPlayerColor GetPlayer()
+    {
+        return player;
+    }
+
+    public void SetPlayer(EnumPlayerColor player)
+    {
+       this.player=player;
     }
 }

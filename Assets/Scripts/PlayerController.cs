@@ -8,6 +8,7 @@ using Assets.Scripts;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    public EnumPlayerColor PlayerColor;
     private SpriteRenderer spriteRenderer;
     public SpriteRenderer spriteBody;
     // Input Actions
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
@@ -223,13 +225,13 @@ public class PlayerController : MonoBehaviour
     {
         if (curWeapon != null)
             curWeapon.DisposeWeapon();
-
+      
         objWeapon = Instantiate(newWeapon, transform.Find("body"));
 
         objWeapon.transform.position = transform.position - Vector3.forward;
         curWeapon = objWeapon.GetComponent<IWeapon>();
-       
-            Vector3 v=curWeapon.GetOffset();
+        curWeapon.SetPlayer(PlayerColor);
+        Vector3 v=curWeapon.GetOffset();
             if(transform.localRotation.y>0)
             {
                 objWeapon.transform.position = transform.position + new Vector3(-v.x, v.y, -1);

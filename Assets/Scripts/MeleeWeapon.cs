@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour,IWeapon
 {
+    public EnumPlayerColor player;
     public Vector3 handPoint;
 
     private Animator animator;
@@ -45,4 +46,13 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
         return EnumMeleeRanged.MELEE;
     }
 
+    public EnumPlayerColor GetPlayer()
+    {
+        return player;
+    }
+
+    public void SetPlayer(EnumPlayerColor player)
+    {
+        this.player = player;
+    }
 }

@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private Vector2 foreOnPlayer;
+    private EnumPlayerColor lastShotBy;
     private float health=100;
-    public bool weaponInHand;
+    public bool weaponInHand=false;
 
     [Header("Sort by Level 0-first !!!")]
     public List<Sprite> skinWithHand;
@@ -15,13 +16,17 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer currentRenderer;
     private GameManager gameManager;
-    private Rigidbody2D rbody2D;
   
     private void Start()
     {
-        rbody2D= GetComponent<Rigidbody2D>();
-        gameManager = FindObjectOfType<GameManager>();
+       Reset(); 
+        gameManager = GameManager.Instance;
+       gameManager.PlayerJoined(lastShotBy, this);
         currentRenderer = transform.Find("body").GetComponent<SpriteRenderer>(); 
+    }
+    public void Reset()
+    {
+        lastShotBy = GetComponent<PlayerController>().PlayerColor;
     }
     private void Update()
     {
@@ -35,22 +40,16 @@ public class Player : MonoBehaviour
             currentRenderer.sprite = skinWithHand[gameManager.currentLevel];
         }
     }
-    private void FixedUpdate()
+
+    public void Hit(Vector2 vel,float damage,EnumPlayerColor player)
     {
-        Move();
-    }
-    public void Hit(Vector2 vel,float damage)
-    {
+        lastShotBy = player;
         health-= damage;
-        print(health);
-        //GetComponent<Rigidbody2D>().velocity= new Vector2(100,0);
-      GetComponent<Rigidbody2D>().AddForce(new Vector2(damage,0), ForceMode2D.Force);
+        if(health<=0)
+        {
+            gameManager.PlayerKilled(player, GetComponent<PlayerController>().PlayerColor);
+            gameObject.SetActive(false);
+        }
     }
-    private void Move()
-    {
-        
-        rbody2D.AddForce(foreOnPlayer/5);
-        foreOnPlayer-= foreOnPlayer / 5;
-        
-    }
+
 }

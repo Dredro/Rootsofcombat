@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public float force = 0;
     // Start is called before the first frame update
     void Awake()
     {

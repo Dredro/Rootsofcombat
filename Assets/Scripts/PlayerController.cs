@@ -2,6 +2,7 @@ using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEditor.Tilemaps;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -13,11 +14,13 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction fireAction;
     private InputAction jumpAction;
+    private InputAction rotateAction;
 
     // Input Actions Value
     private Vector2 move;
     private float jump;
     private float fire;
+    public Vector2 rotate;
 
     // Physics Private
     private bool isGround;
@@ -43,6 +46,9 @@ public class PlayerController : MonoBehaviour
     [Header("Current Weapon")]
     public GameObject objWeapon;
     public IWeapon curWeapon;
+    float a;
+    int i=1;
+ 
 
     private void Start()
     {
@@ -74,6 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         Jump();
         Move();
+        RotateWeapon();
     }
     private void OnUpdate()
     {
@@ -82,12 +89,42 @@ public class PlayerController : MonoBehaviour
             moveAction = playerInput.actions["move"];
             fireAction = playerInput.actions["fire"];
             jumpAction = playerInput.actions["jump"];
+            rotateAction = playerInput.actions["look"];
         }
         // Set value for Input Actions values
         move = moveAction.ReadValue<Vector2>();
         jump = jumpAction.ReadValue<float>();
         fire = fireAction.ReadValue<float>();
+        rotate = rotateAction.ReadValue<Vector2>();
 
+    }
+    private void RotateWeapon()
+    {
+        float Angle;
+        Quaternion quaternion;
+        
+
+       
+       if((rotate.x*i > 0 && rotate.y > 0)||(rotate.x*i>0&&rotate.y<0))
+        {
+            Angle = Mathf.Atan2(rotate.y, i * rotate.x);
+            Angle = Angle * Mathf.Rad2Deg;
+            quaternion = Quaternion.Euler(0, a, Angle);
+            objWeapon.transform.rotation = quaternion;
+        }
+       
+
+       
+
+
+        /*if((objWeapon.transform.eulerAngles.z < 90 && objWeapon.transform.eulerAngles.z >=0)||(objWeapon.transform.eulerAngles.z < 360 && objWeapon.transform.eulerAngles.z > 270))
+        {
+            objWeapon.GetComponent<SpriteRenderer>().flipY = false;
+        }
+        else
+        {
+            objWeapon.GetComponent<SpriteRenderer>().flipY = true;
+        }*/
     }
     private void Move()
     {
@@ -95,13 +132,23 @@ public class PlayerController : MonoBehaviour
         rbody2D.velocity = new Vector2(move.x * moveSpeed, rbody2D.velocity.y);
         if (move.x > 0)
         {
-            spriteBody.flipX = true;
-            spriteRenderer.flipX= true;
+            //  spriteBody.flipX = true;
+            //spriteRenderer.flipX= true;
+            // objWeapon.GetComponent<SpriteRenderer>().flipX = false;
+            Quaternion quaternion = new Quaternion(0, 0, 0, 0);
+            transform.localRotation = quaternion;
+            a = 0;
+            i = 1;
         }
         if (move.x < 0)
         {
-            spriteBody.flipX = false;
-            spriteRenderer.flipX = false;
+            Quaternion quaternion = new Quaternion(0, 180, 0, 0);
+            transform.localRotation = quaternion;
+            a = 180;
+            i = -1;
+            // spriteBody.flipX = false;
+            // spriteRenderer.flipX = false;
+           // objWeapon.GetComponent<SpriteRenderer>().flipX = true;
         }
         
         
@@ -110,7 +157,7 @@ public class PlayerController : MonoBehaviour
     {
         isGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.01f, layerMask);
     }
-
+    
     private void Jump()
     {
         if ((isGround) && (jump == 1) && (Time.time > jumpTimer))
@@ -121,9 +168,20 @@ public class PlayerController : MonoBehaviour
     }
     private void Descent()
     {
-        bool permableUp,permableDown;
-        
-        permableUp = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + transform.localScale.y * 0.32f), 0.15f, permableLayerMask);
+        //bool permableUp,permableDown;
+
+        RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, 0.5f, permableLayerMask);
+        RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, permableLayerMask);
+        if ((hitUp.collider != null)&&(move.y > 0.9f) || (hitDown.collider != null) && (move.y < -0.9f))
+        {
+            coll.isTrigger = true;
+        }
+        else
+        {
+            coll.isTrigger = false;
+        }
+
+       /* permableUp = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + transform.localScale.y * 0.32f), 0.15f, permableLayerMask);
         permableDown = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y * 0.32f), 0.2f, permableLayerMask);
         if ((permableDown && move.y < -0.9f)||permableUp)
         {
@@ -132,7 +190,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             coll.isTrigger = false;
-        }
+        }*/
     }
     private void Fire()
     {

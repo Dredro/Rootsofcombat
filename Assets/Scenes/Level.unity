@@ -1038,15 +1038,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625652990006302690, guid: 6f4629a37a76e7345963e11b6cd8e4e0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8625652990006302690, guid: 6f4629a37a76e7345963e11b6cd8e4e0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8625652990006302690, guid: 6f4629a37a76e7345963e11b6cd8e4e0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8625652990006302690, guid: 6f4629a37a76e7345963e11b6cd8e4e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1560,12 +1560,14 @@ GameObject:
   - component: {fileID: 1951380673}
   - component: {fileID: 1951380672}
   - component: {fileID: 1951380671}
+  - component: {fileID: 1951380674}
+  - component: {fileID: 1951380675}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &1951380671
 MonoBehaviour:
@@ -1618,7 +1620,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 5638506209162497356, guid: cd9c4baba1c44c54d9c37533421676f0, type: 3}
+  m_PlayerPrefab: {fileID: 2285378916679367506, guid: 05b34165f7ca47e4eb0567715b5e597e, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -1643,6 +1645,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1951380674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951380670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe5235c9b483164ca7dbe6a2960abb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodySpriteSf:
+  - {fileID: 21300000, guid: 39f802a8b0ea34e4b9cc6df07906fecd, type: 3}
+  - {fileID: 21300000, guid: cb768f7618c301e4984de3f6024e0db5, type: 3}
+  - {fileID: 21300000, guid: 5643cbbc0d2c4d648905ae024eef9f6f, type: 3}
+  - {fileID: 21300000, guid: 5d2aa7907a908a34bbfe3b6e1633d8b9, type: 3}
+--- !u!114 &1951380675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951380670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d6622fdd5826d46b54891079b25589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsList: []
 --- !u!1001 &6111866557823575114
 PrefabInstance:
   m_ObjectHideFlags: 0

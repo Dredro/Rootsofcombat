@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -173,5 +174,16 @@ public class RangedWeapon : MonoBehaviour, IWeapon
         v.x = (cos * tx) - (sin * ty);
         v.y = (sin * tx) + (cos * ty);
         return v;
+    }
+
+    EnumMeleeRanged IWeapon.GetType()
+    {
+        return EnumMeleeRanged.RANGED;
+    }
+
+    public Vector3 GetOffset()
+    {
+        print("range offset");
+        return new Vector3();
     }
 }

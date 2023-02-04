@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         if(health<=0)
         {
             gameManager.PlayerKilled(player, GetComponent<PlayerController>().PlayerColor);
-            gameObject.SetActive(false);
+            
         }
     }
 

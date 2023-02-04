@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     private EnumPlayerColor player;
     public float force = 0;
     public float damage = 0;
+    public float secDeleteAfter = 2;
     public EnumAmmotype ammotype;
     // Start is called before the first frame update
     void Awake()
@@ -26,7 +27,7 @@ public class Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(0.02f);
         this.AddComponent<BoxCollider2D>();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(secDeleteAfter);
         Destroy(gameObject);
     }
 

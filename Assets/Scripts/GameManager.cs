@@ -6,6 +6,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
  public class InGamePlayer
 {
+    public GameObject brazil;
     public EnumPlayerColor color;
     public Player player;
     public int frags;

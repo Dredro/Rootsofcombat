@@ -101,13 +101,13 @@ MonoBehaviour:
   barrel: {fileID: 8246653710255296745}
   projectile: {fileID: 6099514660244565169, guid: 9528c9a462f88204ab2f37b7ae58f231, type: 3}
   curAmmo: 0
-  maxAmmo: 300
+  maxAmmo: 30
   projectileSpeed: 10
   age: 0
   firetype: 1
   spread: 3
-  secBetweenFire: 0
-  damage: 0.1
+  secBetweenFire: 0.1
+  damage: 7
   secReload: 2
   additionalSpreadBullets: 4
   chargeTime: 10

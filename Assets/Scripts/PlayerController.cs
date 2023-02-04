@@ -218,16 +218,22 @@ public class PlayerController : MonoBehaviour
         objWeapon = Instantiate(newWeapon, this.transform);
         objWeapon.transform.position = transform.position - Vector3.forward;
         curWeapon = objWeapon.GetComponent<IWeapon>();
-        if(curWeapon.GetType()==EnumMeleeRanged.MELEE)
-        {
+       
             Vector3 v=curWeapon.GetOffset();
             if(transform.localRotation.y>0)
-            objWeapon.transform.position =transform.position+ new Vector3(-v.x,v.y,0);
+            {
+                objWeapon.transform.position = transform.position + new Vector3(-v.x, v.y, 0);
+                objWeapon.transform.eulerAngles = new Vector3(0, 0, -v.z);
+            }
+            
             else
-                objWeapon.transform.position = transform.position + new Vector3(v.x, v.y, 0);
-            objWeapon.transform.rotation = new Quaternion(0, v.z, 0,0);
+            {
 
-        }
+                objWeapon.transform.position = transform.position + new Vector3(v.x, v.y, 0);
+                objWeapon.transform.eulerAngles = new Vector3(0, 0, v.z);
+
+            }
+        
     }
 
 }

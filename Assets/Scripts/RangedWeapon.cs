@@ -34,6 +34,11 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     public int additionalSpreadBullets = 4;
     public float chargeTime = 10;//decy sekundy
 
+    [Header("Weapon Type Related Settings")]
+    public float offsetX = 0;
+    public float offsetY = 0;
+    public float offsetZ = 0;
+
 
     public void DisposeWeapon()
     {
@@ -180,7 +185,6 @@ public class RangedWeapon : MonoBehaviour, IWeapon
 
     public Vector3 GetOffset()
     {
-        print("range offset");
-        return new Vector3();
+        return new Vector3(offsetX,offsetY,offsetZ);
     }
 }

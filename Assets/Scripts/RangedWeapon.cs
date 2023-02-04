@@ -33,9 +33,6 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     public int additionalSpreadBullets = 4;
     public float chargeTime = 10;//decy sekundy
 
-    [Header("Offsets")]
-    public float offsetX = 0;
-    public float offsetY = 0;
 
     public void DisposeWeapon()
     {
@@ -50,8 +47,12 @@ public class RangedWeapon : MonoBehaviour, IWeapon
         GameObject projectileObject;
         projectileObject = Instantiate(projectile, barrel.transform.position, Quaternion.Euler(Vector3.forward * randomSpread));
         projectileObject.SetActive(true);
+        
+        if(GetComponentInParent<Transform>().rotation.y==0)
         projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(new Vector2(projectileSpeed, randomSpread),transform.eulerAngles.z);
-        print(curAmmo);
+        else
+        projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(Rotate(new Vector2(projectileSpeed, randomSpread), -transform.eulerAngles.z),180);
+        print(GetComponentInParent<Transform>().rotation.y);
     }
 
     public void Fire1()

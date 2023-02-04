@@ -58,13 +58,10 @@ public class RangedWeapon : MonoBehaviour, IWeapon
 
         if (GetComponentInParent<PlayerController>().left == false)
         {
-
-            print("r");
             projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(new Vector2(projectileSpeed, randomSpread), transform.eulerAngles.z);
         }
         else
         {
-            print("l");
             projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(Rotate(new Vector2(projectileSpeed, randomSpread), -transform.eulerAngles.z), 180);
         }
     }

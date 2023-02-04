@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.layer == 9)
-            col.gameObject.GetComponent<Player>().Hit(GetComponent<Rigidbody2D>().velocity);
+            col.gameObject.GetComponent<Player>().Hit(new Vector2(GetComponent<Rigidbody2D>().velocity.x,0));
         Destroy(gameObject);
     }
 }

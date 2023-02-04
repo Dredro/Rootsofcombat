@@ -34,6 +34,6 @@ public class Player : MonoBehaviour
     }
     public void Hit(Vector2 vel)
     {
-        GetComponent<Rigidbody2D>().velocity += vel;
+        GetComponent<Rigidbody2D>().AddForce(vel );
     }
 }

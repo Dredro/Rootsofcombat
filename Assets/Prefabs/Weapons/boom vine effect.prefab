@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3164969258443296340}
   - component: {fileID: 2959671109482446057}
   - component: {fileID: 2878325576996179993}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: boom vine effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4925,3 +4925,5 @@ MonoBehaviour:
   start: 0.05
   time: 0.35
   plus: 0.07
+  player: 0
+  damage: 70

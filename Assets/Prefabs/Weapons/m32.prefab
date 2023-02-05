@@ -99,15 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 5955191788058545478}
-  projectile: {fileID: 6099514660244565169, guid: 9528c9a462f88204ab2f37b7ae58f231, type: 3}
+  projectile: {fileID: 2499493845024109739, guid: 86f8ebbe30a3e2b4ba16dbfc021f4977, type: 3}
   curAmmo: 0
   maxAmmo: 6
   projectileSpeed: 7
   age: 0
   firetype: 0
   spread: 1
-  secBetweenFire: 0.7
-  damage: 100
+  secBetweenFire: 0.2
+  damage: 25
   secReload: 4
   additionalSpreadBullets: 4
   chargeTime: 10

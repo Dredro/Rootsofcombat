@@ -13,9 +13,13 @@ public class Projectile : MonoBehaviour
     public float noCol = 0.02f;
     public EnumAmmotype ammotype;
     public GameObject explosion;
+    public float delayDeath = 0;
+    public float delayExplosion = 0;
+    private BoxCollider2D colider;
     // Start is called before the first frame update
     void Awake()
     {
+        colider=GetComponent<BoxCollider2D>();
         StartCoroutine(DelayCoroutine());
     }
     public void Set(float force, float damage, EnumPlayerColor player)
@@ -28,9 +32,21 @@ public class Projectile : MonoBehaviour
     IEnumerator DelayCoroutine()
     {
         yield return new WaitForSeconds(noCol);
-        this.AddComponent<BoxCollider2D>();
+        colider.enabled = true;
         yield return new WaitForSeconds(secDeleteAfter);
         Destroy(gameObject);
+    }
+    IEnumerator DelayDeath()
+    {
+        yield return new WaitForSeconds(delayDeath+delayExplosion);
+        Destroy(gameObject);
+    }
+    IEnumerator DelayExplosion()
+    {
+        yield return new WaitForSeconds(delayExplosion);
+        GameObject obj = Instantiate(explosion);
+        obj.GetComponent<Explosis>().player = player;
+        obj.transform.position = transform.position;
     }
 
     // Update is called once per frame
@@ -52,11 +68,11 @@ public class Projectile : MonoBehaviour
 
                 break;
             case EnumAmmotype.EXPLOSIVE:
-                GameObject obj=Instantiate(explosion);
-                obj.GetComponent<Explosis>().player= player;
-                obj.transform.position= transform.position;
+                if (col.gameObject.layer == 9)
+                    col.gameObject.GetComponent<Player>().Hit(new Vector2(force, 0), damage, player);
+                StartCoroutine(DelayExplosion());
                 break;
         }
-        Destroy(gameObject);
+        StartCoroutine(DelayDeath());
     }
 }

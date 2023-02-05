@@ -139,7 +139,7 @@ MonoBehaviour:
   spread: 1
   secBetweenFire: 1
   damage: 50
-  secReload: 5
+  secReload: 2
   additionalSpreadBullets: 1
   chargeTime: 10
   offsetX: 0.24

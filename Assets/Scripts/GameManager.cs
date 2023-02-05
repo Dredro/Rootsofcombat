@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
     public List<InGamePlayer> lobby=new();
 
     public EnumAge currentAge;
-    
- 
+
+    public GameObject pauseMenu;
     int sceneNumber = 1;
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -65,13 +65,24 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource= GetComponent<AudioSource>();
      DontDestroyOnLoad(this.gameObject);
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        /*if (Input.GetAxis("Cancel") == 1)
+        {
+            pauseMenu.SetActive(true);
+        }
+        else
+        {
+            pauseMenu.SetActive(false);
+        }*/
+      
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             PrintScoreboard();
@@ -110,6 +121,31 @@ public class GameManager : MonoBehaviour
         currentCamera++;
         cameras[currentCamera].SetActive(true);*/
         currentLevel = sceneNumber - 1;
+        switch (currentLevel)
+        {
+            case 0:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[0]);
+                break;
+            case 1:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[1]);
+                break;
+            case 2:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[2]);
+                break;
+            case 3:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[3]);
+                break;
+            case 4:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[4]);
+                break;
+
+        }
+
         if (lobby.Count > 0)
         {
             if (textMeshProUGUI != null)
@@ -163,6 +199,7 @@ public class GameManager : MonoBehaviour
                     print(i.color + " got his weapons downgraded");
                     i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
                     i.frags++;
+
                 }
             }
         }

@@ -141,7 +141,7 @@ MonoBehaviour:
   damage: 15
   secReload: 0
   additionalSpreadBullets: 4
-  chargeTime: 6
+  chargeTime: 10
   offsetX: 0.2
   offsetY: 0
   offsetZ: 0

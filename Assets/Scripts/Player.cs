@@ -22,8 +22,10 @@ public class Player : MonoBehaviour
     public ParticleSystem blood;
     public ParticleSystem bloodDead;
 
+
     private void Start()
     {
+        
         controller= GetComponent<PlayerController>();
        Reset(); 
         gameManager = GameManager.Instance;

@@ -10,6 +10,8 @@ public class Explosis : MonoBehaviour
     public float plus = 0.01f;
     public EnumPlayerColor player;
     public float damage = 100;
+    public AudioClip explosionSound;
+    private AudioSource audioSource;
     public void FixedUpdate()
     {
         start +=plus;
@@ -17,10 +19,15 @@ public class Explosis : MonoBehaviour
     }
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(DestroyAfter());
     }
     IEnumerator DestroyAfter()
     {
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(explosionSound);
+        }
         yield return new WaitForSeconds(time);
         Destroy(gameObject);
     }

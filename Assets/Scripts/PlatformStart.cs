@@ -25,7 +25,7 @@ private void Update()
     {
         if (playerInputManager.playerCount == i)
         {
-            gameManager.ChangeCamera();
+            gameManager.ChangeLevel();
         }
     }
 }

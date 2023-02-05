@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
     public GameObject objWeapon;
     public IWeapon curWeapon;
 
+    [Header("AudioClip")]
+    public AudioSource audioSource;
+    public AudioClip jumpClip;
+
     //Player
     private Player player;
 
@@ -60,7 +64,7 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
@@ -175,6 +179,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((isGround) && (jump == 1) && (Time.time > jumpTimer))
         {
+            audioSource.PlayOneShot(jumpClip);
             rbody2D.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
             jumpTimer = Time.time + jumpDelay;
         }

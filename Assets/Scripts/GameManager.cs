@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ChangeCamera()
+    public void ChangeLevel()
     {
         /*cameras[currentCamera].SetActive(false);
         currentCamera++;

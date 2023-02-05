@@ -10,7 +10,9 @@ public class Projectile : MonoBehaviour
     public float force = 0;
     public float damage = 0;
     public float secDeleteAfter = 2;
+    public float noCol = 0.02f;
     public EnumAmmotype ammotype;
+    public GameObject explosion;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,7 +27,7 @@ public class Projectile : MonoBehaviour
 
     IEnumerator DelayCoroutine()
     {
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(noCol);
         this.AddComponent<BoxCollider2D>();
         yield return new WaitForSeconds(secDeleteAfter);
         Destroy(gameObject);
@@ -44,11 +46,17 @@ public class Projectile : MonoBehaviour
 
                 if (col.gameObject.layer == 9)
                     col.gameObject.GetComponent<Player>().Hit(new Vector2(force, 0), damage, player);
-                Destroy(gameObject);
+                
                 break;
             case EnumAmmotype.GRENADE:
 
                 break;
+            case EnumAmmotype.EXPLOSIVE:
+                GameObject obj=Instantiate(explosion);
+                obj.GetComponent<Explosis>().player= player;
+                obj.transform.position= transform.position;
+                break;
         }
+        Destroy(gameObject);
     }
 }

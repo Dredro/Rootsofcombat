@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4334417136232692771}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4334417136413817390}
   - component: {fileID: 4334417136413817385}
   - component: {fileID: 4334417136413817384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rlauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 4334417136232692770}
-  projectile: {fileID: 0}
+  projectile: {fileID: 6747957772617643418, guid: 11185ca3c342960499fb8d2e7c66b26d, type: 3}
   curAmmo: 0
   maxAmmo: 4
   projectileSpeed: 10
@@ -143,7 +143,7 @@ MonoBehaviour:
   additionalSpreadBullets: 4
   chargeTime: 10
   offsetX: 0
-  offsetY: 0
+  offsetY: 0.05
   offsetZ: 0
   sound: {fileID: 0}
   animator: {fileID: 0}

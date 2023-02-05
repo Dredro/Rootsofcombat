@@ -181,7 +181,9 @@ MonoBehaviour:
   force: 10
   damage: 0
   secDeleteAfter: 2
+  noCol: 0.02
   ammotype: 0
+  explosion: {fileID: 0}
 --- !u!50 &7824806476879213335
 Rigidbody2D:
   serializedVersion: 4

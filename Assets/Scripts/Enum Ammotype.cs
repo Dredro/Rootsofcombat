@@ -8,6 +8,7 @@ namespace Assets.Scripts
 {
     public enum EnumAmmotype
     {
-        NORMAL,GRENADE
+        NORMAL,GRENADE,
+        EXPLOSIVE
     }
 }

@@ -60,5 +60,18 @@ public class Player : MonoBehaviour
             }
         }
     }
+    public void Hit(Vector2 vel, float damage, EnumPlayerColor player,bool self)
+    {
+
+            lastShotBy = player;
+            health -= damage;
+            if (health <= 0)
+            {
+                gameManager.PlayerKilled(player, gameObject.GetComponent<PlayerController>().PlayerColor);
+
+            }
+        
+    }
+
 
 }

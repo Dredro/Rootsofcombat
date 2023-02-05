@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseMenu;
     int sceneNumber = 1;
+
+    public AudioSource audioSource;
+    public AudioClip[] audioClips;
+    
     public static GameManager Instance { get; private set; }
     private void Awake()
     {

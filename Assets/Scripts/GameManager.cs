@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     int timer=5;
 
     public GameObject brazil;
-    public List<GameObject> SpawnPoints;
+    public GameObject[] SpawnPoints;
     public int currentLevel=0;
 
     public List<InGamePlayer> lobby=new();
@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeLevel()
     {
+        ChooseSpawn();
         /*cameras[currentCamera].SetActive(false);
         currentCamera++;
         cameras[currentCamera].SetActive(true);*/
@@ -140,7 +141,9 @@ public class GameManager : MonoBehaviour
             {
                 /*GameObject obj = i.player.gameObject;
                 StartCoroutine(Respawn(0, obj));*/
+                i.player.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
+                i.player.gameObject.transform.position = ChooseSpawn().transform.position;
                 textMeshProUGUI.gameObject.SetActive(false);
             }
         }
@@ -196,7 +199,8 @@ public class GameManager : MonoBehaviour
     }
     private GameObject ChooseSpawn()
     {
-        int i = Random.Range(0,SpawnPoints.Count);
+        SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
+        int i = Random.Range(0,SpawnPoints.Length);
         return SpawnPoints[i];
     }
     private void OnCollisionEnter2D(Collision2D collision)

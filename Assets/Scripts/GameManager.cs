@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -29,13 +30,16 @@ public class InGamePlayer
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI textMeshProUGUI;
+    int timer=5;
+
     public GameObject brazil;
     public List<GameObject> SpawnPoints;
     public int currentLevel=0;
 
     public List<InGamePlayer> lobby=new();
 
-    public List<GameObject> cameras;
+ 
     int sceneNumber = 1;
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -52,13 +56,13 @@ public class GameManager : MonoBehaviour
         }
        
     }
-
+    
     [Header("Weapons")]
     public List<GameObject> weaponsList = new();
     // Start is called before the first frame update
     void Start()
     {
-     
+     DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -68,7 +72,9 @@ public class GameManager : MonoBehaviour
         {
             PrintScoreboard();
         }
+        
     }
+    
 
     public void ChangeLevel()
     {
@@ -77,14 +83,44 @@ public class GameManager : MonoBehaviour
         cameras[currentCamera].SetActive(true);*/
         if(lobby.Count > 0)
         {
+            if (textMeshProUGUI != null)
+                textMeshProUGUI.gameObject.SetActive(true);
             SceneManager.LoadScene(sceneNumber);
+            timer = 5;
+            Invoke("StartSpawn", 5f);
+            StartCoroutine(SpawnPlayers());
         }
-      
-        
+
+
+    }
+
+    IEnumerator SpawnPlayers() {
+        yield return new WaitForSeconds(1f);
+        timer--; 
+        if (textMeshProUGUI != null)
+            textMeshProUGUI.text = timer.ToString();
+        if (timer != 0)
+            StartCoroutine(SpawnPlayers());
+        else
+            StartSpawn();
+    }
+    private void StartSpawn()
+    {
+        if (timer == 0)
+        {
+            foreach (InGamePlayer i in lobby)
+            {
+                GameObject obj = i.player.gameObject;
+                StartCoroutine(Respawn(2, obj));
+                i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
+                textMeshProUGUI.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void PlayerKilled(EnumPlayerColor killer, EnumPlayerColor victim)
     {
+      
         print(killer + " killed " + victim);
         if(killer!=victim)
         {

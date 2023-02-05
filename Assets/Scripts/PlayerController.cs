@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();

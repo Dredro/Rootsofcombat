@@ -46,6 +46,6 @@ public class SpawnManager : MonoBehaviour
 
     void SetPlayerPosition(Transform transform)
     {
-        transform.position = spawn.Pop();
+       // transform.position = spawn.Pop();
     }
 }

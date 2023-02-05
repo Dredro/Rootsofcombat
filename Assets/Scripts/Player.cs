@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer currentRenderer;
     private GameManager gameManager;
 
-
+    public ParticleSystem blood;
   
     private void Start()
     {
@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
         {
             lastShotBy = player;
             health -= damage;
+            blood.Play();
             if (health <= 0)
             {
                 gameManager.PlayerKilled(player, gameObject.GetComponent<PlayerController>().PlayerColor);

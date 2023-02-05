@@ -1509,9 +1509,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: m_JoinAction.m_UseReference
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: da27ebda-f0b2-403b-8046-ca3a839af579
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1776551598}
+    - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Join
+      objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545840, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: players.Array.data[2]
       value: 

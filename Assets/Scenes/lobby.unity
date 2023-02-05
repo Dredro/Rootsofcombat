@@ -904,12 +904,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: brazil
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: cameras.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: cameras.Array.data[0]
@@ -921,12 +925,56 @@ PrefabInstance:
       objectReference: {fileID: 1355874190}
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: SpawnPoints.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.size
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: SpawnPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 1561999584}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: SpawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 5076145946579664794, guid: cab892f1672d57a43a42ae518657fa09, type: 3}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 5006429161675852166, guid: f8622a527a131d54388415f172ce6d1d, type: 3}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 7998431384838778167, guid: 1246338a91c79bd4ab862f2284391e5c, type: 3}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1698770551250013818, guid: 841cbc1fde4fc684eaaed04cbf1c9d4b, type: 3}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[4]
+      value: 
+      objectReference: {fileID: 4334417136413817387, guid: 5bb759872e60f4c4b8a39fe749d3b2cd, type: 3}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[5]
+      value: 
+      objectReference: {fileID: 3500103331477680920, guid: f86a1f560a32f814681489c1720bf35d, type: 3}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[6]
+      value: 
+      objectReference: {fileID: 5009853308854693600, guid: fae744dc573c0b44a9edab78fba0505e, type: 3}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[7]
+      value: 
+      objectReference: {fileID: 3398427641161568052, guid: 98848e57dfc50124699d4d939a922f6f, type: 3}
+    - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: weaponsList.Array.data[8]
+      value: 
+      objectReference: {fileID: 5739518987937783703, guid: 3d14c157bae99194eb5e5e3feb029795, type: 3}
     - target: {fileID: 2115618641191545742, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: m_RootOrder
       value: 4

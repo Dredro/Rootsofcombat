@@ -23,8 +23,9 @@ public class PlatformStart : MonoBehaviour
   
 private void Update()
     {
-        if (playerInputManager.playerCount == i)
+        if (playerInputManager.playerCount == i && i>=2)
         {
+            playerInputManager.DisableJoining();
             gameManager.ChangeLevel();
         }
     }

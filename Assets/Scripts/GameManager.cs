@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public List<InGamePlayer> lobby=new();
 
-    public List<GameObject> cameras;
+ 
     int sceneNumber = 1;
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -52,13 +52,13 @@ public class GameManager : MonoBehaviour
         }
        
     }
-
+    
     [Header("Weapons")]
     public List<GameObject> weaponsList = new();
     // Start is called before the first frame update
     void Start()
     {
-     
+     DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -78,13 +78,26 @@ public class GameManager : MonoBehaviour
         if(lobby.Count > 0)
         {
             SceneManager.LoadScene(sceneNumber);
+            //Invoke("StartSpawn()", 3f);
         }
-      
-        
+
+
+    }
+
+  
+    private void StartSpawn()
+    {
+        foreach (InGamePlayer i in lobby)
+        {
+            GameObject obj = i.player.gameObject;
+            StartCoroutine(Respawn(2, obj));
+            i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
+        }
     }
 
     public void PlayerKilled(EnumPlayerColor killer, EnumPlayerColor victim)
     {
+      
         print(killer + " killed " + victim);
         if(killer!=victim)
         {

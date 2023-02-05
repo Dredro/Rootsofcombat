@@ -132,7 +132,7 @@ MonoBehaviour:
   barrel: {fileID: 2038887151007424914}
   projectile: {fileID: 6099514660244565169, guid: 9528c9a462f88204ab2f37b7ae58f231, type: 3}
   curAmmo: 1
-  maxAmmo: 1
+  maxAmmo: 5
   projectileSpeed: 10
   age: 2
   firetype: 0

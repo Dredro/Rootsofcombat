@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 2
   damage: 2
-  secDeleteAfter: 2
+  secDeleteAfter: 4
   noCol: 0.05
   ammotype: 0
   explosion: {fileID: 0}

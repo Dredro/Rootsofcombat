@@ -138,8 +138,8 @@ public class GameManager : MonoBehaviour
         {
             foreach (InGamePlayer i in lobby)
             {
-                GameObject obj = i.player.gameObject;
-                StartCoroutine(Respawn(0, obj));
+                /*GameObject obj = i.player.gameObject;
+                StartCoroutine(Respawn(0, obj));*/
                 i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
                 textMeshProUGUI.gameObject.SetActive(false);
             }

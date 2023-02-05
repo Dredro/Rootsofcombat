@@ -101,19 +101,20 @@ MonoBehaviour:
   barrel: {fileID: 5955191788058545478}
   projectile: {fileID: 6099514660244565169, guid: 9528c9a462f88204ab2f37b7ae58f231, type: 3}
   curAmmo: 0
-  maxAmmo: 60
-  projectileSpeed: 100
+  maxAmmo: 6
+  projectileSpeed: 7
   age: 0
-  firetype: 1
+  firetype: 0
   spread: 1
-  secBetweenFire: 0.1
-  damage: 0
-  secReload: 1
+  secBetweenFire: 0.7
+  damage: 100
+  secReload: 4
   additionalSpreadBullets: 4
   chargeTime: 10
   offsetX: 0
   offsetY: 0
   offsetZ: 0
+  sound: {fileID: 0}
   animator: {fileID: 0}
 --- !u!1 &5955191788058545478
 GameObject:

@@ -16,7 +16,6 @@ public class InGamePlayer
     public int frags;
     public int deaths;
     public int currentWeapon;
-    
 
     public InGamePlayer(EnumPlayerColor color,Player player)
     {
@@ -199,6 +198,7 @@ public class GameManager : MonoBehaviour
             {
                 if(i.color==killer)
                 {
+                    if(i.frags%2==1)
                     i.currentWeapon++;
                     print(i.color + " got his weapons downgraded");
                     i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);

@@ -17,12 +17,14 @@ public class PlayerController : MonoBehaviour
     private InputAction fireAction;
     private InputAction jumpAction;
     private InputAction rotateAction;
+ 
 
     // Input Actions Value
     private Vector2 move;
     private float jump;
     private float fire;
     public Vector2 rotate;
+
 
     // Physics Private
     private bool isGround;
@@ -52,6 +54,8 @@ public class PlayerController : MonoBehaviour
     [Header("AudioClip")]
     public AudioSource audioSource;
     public AudioClip jumpClip;
+
+    public GameObject pauseUi;
 
     //Player
     private Player player;
@@ -104,14 +108,17 @@ public class PlayerController : MonoBehaviour
             fireAction = playerInput.actions["fire"];
             jumpAction = playerInput.actions["jump"];
             rotateAction = playerInput.actions["look"];
+      
         }
         // Set value for Input Actions values
         move = moveAction.ReadValue<Vector2>();
         jump = jumpAction.ReadValue<float>();
         fire = fireAction.ReadValue<float>();
         rotate = rotateAction.ReadValue<Vector2>();
+       
 
     }
+
     private void RotateWeapon()
     {
         if (objWeapon != null&&curWeapon.GetType()==EnumMeleeRanged.RANGED)

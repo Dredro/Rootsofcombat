@@ -36,13 +36,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject brazil;
     public List<GameObject> SpawnPoints;
+    public List<AudioClip> audioClips;
     public int currentLevel=0;
 
     public List<InGamePlayer> lobby=new();
 
     public EnumAge currentAge;
-    
- 
+
+    public GameObject pauseMenu;
     int sceneNumber = 1;
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -71,7 +72,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*if (Input.GetAxis("Cancel") == 1)
+        {
+            pauseMenu.SetActive(true);
+        }
+        else
+        {
+            pauseMenu.SetActive(false);
+        }*/
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             PrintScoreboard();
@@ -160,6 +168,7 @@ public class GameManager : MonoBehaviour
                     print(i.color + " got his weapons downgraded");
                     i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
                     i.frags++;
+
                 }
             }
         }

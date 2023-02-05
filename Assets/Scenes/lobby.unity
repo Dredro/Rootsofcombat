@@ -2191,7 +2191,7 @@ PrefabInstance:
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: audioClips.Array.data[0]
       value: 
-      objectReference: {fileID: 5006429161675852166, guid: f8622a527a131d54388415f172ce6d1d, type: 3}
+      objectReference: {fileID: 8300000, guid: bac02147947889544b84ccbc93f35b5f, type: 3}
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: SpawnPoints.Array.data[0]
       value: 
@@ -2203,7 +2203,7 @@ PrefabInstance:
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: weaponsList.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 65b56ecaa44dfb945b754021d1d6bad3, type: 3}
+      objectReference: {fileID: 7998431384838778167, guid: 1246338a91c79bd4ab862f2284391e5c, type: 3}
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: weaponsList.Array.data[9]
       value: 

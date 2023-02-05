@@ -223,4 +223,9 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     {
        this.player=player;
     }
+
+    public EnumAge GetAge()
+    {
+        return age;
+    }
 }

@@ -13,6 +13,7 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
     private Animator animator;
     private AudioSource audioSource;
     public float damage;
+    public EnumAge age;
     void Start()
     {
         audioSource= GetComponent<AudioSource>();
@@ -70,4 +71,8 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
         
     }
 
+    public EnumAge GetAge()
+    {
+        return age;
+    }
 }

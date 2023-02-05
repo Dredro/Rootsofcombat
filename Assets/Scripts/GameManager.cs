@@ -16,6 +16,7 @@ public class InGamePlayer
     public int frags;
     public int deaths;
     public int currentWeapon;
+    
 
     public InGamePlayer(EnumPlayerColor color,Player player)
     {
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public List<InGamePlayer> lobby=new();
 
+    public EnumAge currentAge;
+    
  
     int sceneNumber = 1;
     public static GameManager Instance { get; private set; }
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             PrintScoreboard();
@@ -75,13 +79,30 @@ public class GameManager : MonoBehaviour
         
     }
     
-
+    void AgeCheck()
+    {
+        foreach(InGamePlayer i in lobby)
+        {
+            if(i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge() > currentAge && currentLevel<4)
+            {
+                currentAge = i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge();
+                currentLevel++;
+                ChangeLevel();
+            }
+            if (currentLevel > 4)
+            {
+                sceneNumber = 0;
+                ChangeLevel();
+            }
+        }
+    }
     public void ChangeLevel()
     {
         /*cameras[currentCamera].SetActive(false);
         currentCamera++;
         cameras[currentCamera].SetActive(true);*/
-        if(lobby.Count > 0)
+        currentLevel = sceneNumber - 1;
+        if (lobby.Count > 0)
         {
             if (textMeshProUGUI != null)
                 textMeshProUGUI.gameObject.SetActive(true);
@@ -111,7 +132,7 @@ public class GameManager : MonoBehaviour
             foreach (InGamePlayer i in lobby)
             {
                 GameObject obj = i.player.gameObject;
-                StartCoroutine(Respawn(2, obj));
+                StartCoroutine(Respawn(0, obj));
                 i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
                 textMeshProUGUI.gameObject.SetActive(false);
             }

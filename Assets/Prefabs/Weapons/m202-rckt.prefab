@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6747957772617643416}
   - component: {fileID: 6747957772617643419}
   - component: {fileID: -1808775451156266411}
-  m_Layer: 8
+  - component: {fileID: -2541524827182533665}
+  m_Layer: 10
   m_Name: m202-rckt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,11 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 0
-  damage: 0
+  damage: 30
   secDeleteAfter: 2
   noCol: 0.06
   ammotype: 2
   explosion: {fileID: 8221667362767768361, guid: 8ccdeb49876577d4d8979544a2b75c0b, type: 3}
+  delayDeath: 0
+  delayExplosion: 0
 --- !u!50 &-1808775451156266411
 Rigidbody2D:
   serializedVersion: 4
@@ -125,3 +128,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &-2541524827182533665
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747957772617643418}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00045144558, y: -0.0027085543}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.12949443, y: 0.09608817}
+  m_EdgeRadius: 0

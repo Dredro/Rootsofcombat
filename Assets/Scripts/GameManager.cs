@@ -83,16 +83,23 @@ public class GameManager : MonoBehaviour
     {
         foreach(InGamePlayer i in lobby)
         {
-            if(i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge() > currentAge && currentLevel<4)
+            PlayerController playerController;
+            if ((sceneNumber > 0) && (i.player.TryGetComponent<PlayerController>(out playerController)))
             {
-                currentAge = i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge();
-                sceneNumber++;
-                ChangeLevel();
-            }
-            if (currentLevel > 4)
-            {
-                sceneNumber = 0;
-                ChangeLevel();
+                if (playerController.curWeapon != null)
+                {
+                    if (playerController.curWeapon.GetAge() > currentAge && currentLevel < 4)
+                    {
+                        currentAge = i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge();
+                        sceneNumber++;
+                        ChangeLevel();
+                    }
+                    if (currentLevel > 4)
+                    {
+                        sceneNumber = 0;
+                        ChangeLevel();
+                    }
+                }
             }
         }
     }
@@ -196,10 +203,12 @@ public class GameManager : MonoBehaviour
     {
         if (collision.gameObject.layer == 9)
         {
-            print("spadanko"+collision.gameObject.name);
-            Player player=collision.gameObject.GetComponent<Player>();
-            PlayerKilled(player.lastShotBy,player.gameObject.GetComponent<PlayerController>().PlayerColor);
+            print("spadanko" + collision.gameObject.name);
+            Player player = collision.gameObject.GetComponent<Player>();
+            PlayerKilled(player.lastShotBy, player.gameObject.GetComponent<PlayerController>().PlayerColor);
         }
+        else
+            Destroy(collision.gameObject);
             
     }
 }

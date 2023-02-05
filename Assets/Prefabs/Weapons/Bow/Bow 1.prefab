@@ -124,7 +124,7 @@ MonoBehaviour:
   curAmmo: 10
   maxAmmo: 10
   projectileSpeed: 1
-  age: 0
+  age: 3
   firetype: 2
   spread: 0
   secBetweenFire: 0.1
@@ -132,6 +132,10 @@ MonoBehaviour:
   secReload: 1
   additionalSpreadBullets: 4
   chargeTime: 7
+  offsetX: 0
+  offsetY: 0
+  offsetZ: 0
+  sound: {fileID: 0}
   animator: {fileID: 0}
 --- !u!1 &5353684082885245389
 GameObject:

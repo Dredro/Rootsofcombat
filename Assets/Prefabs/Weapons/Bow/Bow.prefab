@@ -124,7 +124,7 @@ MonoBehaviour:
   curAmmo: 10
   maxAmmo: 10
   projectileSpeed: 1
-  age: 0
+  age: 3
   firetype: 2
   spread: 0
   secBetweenFire: 0.1
@@ -132,6 +132,10 @@ MonoBehaviour:
   secReload: 1
   additionalSpreadBullets: 4
   chargeTime: 7
+  offsetX: 0
+  offsetY: 0
+  offsetZ: 0
+  sound: {fileID: 0}
   animator: {fileID: 0}
 --- !u!1 &1748794100207913463
 GameObject:
@@ -256,7 +260,7 @@ BoxCollider2D:
   m_Offset: {x: 0.004350066, y: 0.0043500066}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.71834075, y: 0.5194081}
     oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5

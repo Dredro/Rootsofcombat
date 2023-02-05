@@ -9,6 +9,7 @@ public class Explosis : MonoBehaviour
     public float time = 0.6f;
     public float plus = 0.01f;
     public EnumPlayerColor player;
+    public float damage = 100;
     public void FixedUpdate()
     {
         start +=plus;
@@ -28,7 +29,7 @@ public class Explosis : MonoBehaviour
     
 
                 if (col.gameObject.layer == 9)
-                    col.gameObject.GetComponent<Player>().Hit(new Vector2(0, 0), 100, player,true);
+                    col.gameObject.GetComponent<Player>().Hit(new Vector2(0, 0), damage, player,true);
 
           
         

@@ -46,7 +46,9 @@ public class GameManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip[] audioClips;
-    
+
+    public HealthBar[] healthBars;
+
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -91,6 +93,17 @@ public class GameManager : MonoBehaviour
             PrintScoreboard();
         }
         AgeCheck();
+
+
+        int j = 0;
+            foreach (var i in lobby)
+            {
+            healthBars[j].gameObject.SetActive(true);
+            healthBars[j].SetValue(i.player.health);
+            j++;
+            }
+            
+        
     }
     
     void AgeCheck()

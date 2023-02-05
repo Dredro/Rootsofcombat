@@ -103,7 +103,7 @@ MonoBehaviour:
   curAmmo: 0
   maxAmmo: 30
   projectileSpeed: 10
-  age: 0
+  age: 1
   firetype: 1
   spread: 3
   secBetweenFire: 0.1

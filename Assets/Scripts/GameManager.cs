@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject brazil;
     public List<GameObject> SpawnPoints;
-    public List<AudioClip> audioClips;
+    public AudioClip[] audioClips;
+    public AudioSource audioSource;
     public int currentLevel=0;
 
     public List<InGamePlayer> lobby=new();
@@ -66,7 +67,32 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource= GetComponent<AudioSource>();
      DontDestroyOnLoad(this.gameObject);
+        switch (currentLevel)
+        {
+            case 0:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[0]);
+                break;
+            case 1:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[1]);
+                break;
+            case 2:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[2]);
+                break;
+            case 3:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[3]);
+                break;
+            case 4:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[4]);
+                break;
+
+        }
     }
 
     // Update is called once per frame
@@ -80,6 +106,8 @@ public class GameManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
         }*/
+      
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             PrintScoreboard();
@@ -113,6 +141,30 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeLevel()
     {
+        switch (currentLevel)
+        {
+            case 0:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[0]);
+                break;
+            case 1:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[1]);
+                break;
+            case 2:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[2]);
+                break;
+            case 3:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[3]);
+                break;
+            case 4:
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClips[4]);
+                break;
+
+        }
         /*cameras[currentCamera].SetActive(false);
         currentCamera++;
         cameras[currentCamera].SetActive(true);*/

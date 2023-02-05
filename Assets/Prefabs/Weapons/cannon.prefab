@@ -99,16 +99,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 2146313866158735427}
-  projectile: {fileID: 8635594056963551332, guid: 929f7df1917682d4e84b46afda1981dd, type: 3}
+  projectile: {fileID: 4351013808964417590, guid: 76ddda0cccdbfbf409c02fad86786002, type: 3}
   curAmmo: 0
-  maxAmmo: 1000
-  projectileSpeed: 10
-  age: 0
-  firetype: 1
-  spread: 0
-  secBetweenFire: 0.1
-  damage: 0
-  secReload: 1
+  maxAmmo: 1
+  projectileSpeed: 15
+  age: 2
+  firetype: 0
+  spread: 2
+  secBetweenFire: 0
+  damage: 60
+  secReload: 2
   additionalSpreadBullets: 4
   chargeTime: 10
   offsetX: 0.04

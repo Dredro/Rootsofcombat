@@ -196,10 +196,12 @@ public class GameManager : MonoBehaviour
     {
         if (collision.gameObject.layer == 9)
         {
-            print("spadanko"+collision.gameObject.name);
-            Player player=collision.gameObject.GetComponent<Player>();
-            PlayerKilled(player.lastShotBy,player.gameObject.GetComponent<PlayerController>().PlayerColor);
+            print("spadanko" + collision.gameObject.name);
+            Player player = collision.gameObject.GetComponent<Player>();
+            PlayerKilled(player.lastShotBy, player.gameObject.GetComponent<PlayerController>().PlayerColor);
         }
+        else
+            Destroy(collision.gameObject);
             
     }
 }

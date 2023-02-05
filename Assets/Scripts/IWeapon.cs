@@ -17,5 +17,6 @@ public interface IWeapon
     public Vector3 GetOffset();
     public EnumPlayerColor GetPlayer();
     public void SetPlayer(EnumPlayerColor player);
-    
+
+    public EnumAge GetAge();
 }

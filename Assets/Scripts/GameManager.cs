@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -29,6 +30,9 @@ public class InGamePlayer
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI textMeshProUGUI;
+    int timer=5;
+
     public GameObject brazil;
     public List<GameObject> SpawnPoints;
     public int currentLevel=0;
@@ -68,7 +72,9 @@ public class GameManager : MonoBehaviour
         {
             PrintScoreboard();
         }
+        
     }
+    
 
     public void ChangeLevel()
     {
@@ -77,21 +83,38 @@ public class GameManager : MonoBehaviour
         cameras[currentCamera].SetActive(true);*/
         if(lobby.Count > 0)
         {
+            if (textMeshProUGUI != null)
+                textMeshProUGUI.gameObject.SetActive(true);
             SceneManager.LoadScene(sceneNumber);
-            //Invoke("StartSpawn()", 3f);
+            timer = 5;
+            Invoke("StartSpawn", 5f);
+            StartCoroutine(SpawnPlayers());
         }
 
 
     }
 
-  
+    IEnumerator SpawnPlayers() {
+        yield return new WaitForSeconds(1f);
+        timer--; 
+        if (textMeshProUGUI != null)
+            textMeshProUGUI.text = timer.ToString();
+        if (timer != 0)
+            StartCoroutine(SpawnPlayers());
+        else
+            StartSpawn();
+    }
     private void StartSpawn()
     {
-        foreach (InGamePlayer i in lobby)
+        if (timer == 0)
         {
-            GameObject obj = i.player.gameObject;
-            StartCoroutine(Respawn(2, obj));
-            i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
+            foreach (InGamePlayer i in lobby)
+            {
+                GameObject obj = i.player.gameObject;
+                StartCoroutine(Respawn(2, obj));
+                i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
+                textMeshProUGUI.gameObject.SetActive(false);
+            }
         }
     }
 

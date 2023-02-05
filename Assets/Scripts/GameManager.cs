@@ -76,23 +76,30 @@ public class GameManager : MonoBehaviour
         {
             PrintScoreboard();
         }
-        
+        AgeCheck();
     }
     
     void AgeCheck()
     {
         foreach(InGamePlayer i in lobby)
         {
-            if(i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge() > currentAge && currentLevel<4)
+            PlayerController playerController;
+            if ((sceneNumber > 0) && (i.player.TryGetComponent<PlayerController>(out playerController)))
             {
-                currentAge = i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge();
-                currentLevel++;
-                ChangeLevel();
-            }
-            if (currentLevel > 4)
-            {
-                sceneNumber = 0;
-                ChangeLevel();
+                if (playerController.curWeapon != null)
+                {
+                    if (playerController.curWeapon.GetAge() > currentAge && currentLevel < 4)
+                    {
+                        currentAge = i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge();
+                        sceneNumber++;
+                        ChangeLevel();
+                    }
+                    if (currentLevel > 4)
+                    {
+                        sceneNumber = 0;
+                        ChangeLevel();
+                    }
+                }
             }
         }
     }

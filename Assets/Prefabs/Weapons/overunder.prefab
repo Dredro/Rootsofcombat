@@ -102,12 +102,12 @@ MonoBehaviour:
   projectile: {fileID: 6099514660244565169, guid: 9528c9a462f88204ab2f37b7ae58f231, type: 3}
   curAmmo: 0
   maxAmmo: 10
-  projectileSpeed: 0
+  projectileSpeed: 10
   age: 1
   firetype: 3
-  spread: 2
+  spread: 2.5
   secBetweenFire: 0.5
-  damage: 20
+  damage: 10
   secReload: 2
   additionalSpreadBullets: 4
   chargeTime: 10

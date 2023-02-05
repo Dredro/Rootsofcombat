@@ -105,11 +105,11 @@ MonoBehaviour:
   maxAmmo: 7
   projectileSpeed: 15
   age: 1
-  firetype: 2
-  spread: 0
-  secBetweenFire: 1
-  damage: 50
-  secReload: 3
+  firetype: 0
+  spread: 1
+  secBetweenFire: 0.2
+  damage: 15
+  secReload: 1.5
   additionalSpreadBullets: 0
   chargeTime: 1
   offsetX: 0.2

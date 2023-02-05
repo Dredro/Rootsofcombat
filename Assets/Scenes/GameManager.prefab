@@ -126,12 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d6622fdd5826d46b54891079b25589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textMeshProUGUI: {fileID: 0}
   brazil: {fileID: 2554248458436841959}
   SpawnPoints:
-  - {fileID: 2554248460002263688}
-  - {fileID: 2554248458200502247}
+  - {fileID: 0}
+  - {fileID: 0}
   currentLevel: 0
-  cameras: []
+  currentAge: 0
   weaponsList:
   - {fileID: 5076145946579664794, guid: cab892f1672d57a43a42ae518657fa09, type: 3}
   - {fileID: 4334417136413817387, guid: 5bb759872e60f4c4b8a39fe749d3b2cd, type: 3}

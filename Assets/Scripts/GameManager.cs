@@ -69,30 +69,7 @@ public class GameManager : MonoBehaviour
     {
         audioSource= GetComponent<AudioSource>();
      DontDestroyOnLoad(this.gameObject);
-        switch (currentLevel)
-        {
-            case 0:
-                audioSource.Stop();
-                audioSource.PlayOneShot(audioClips[0]);
-                break;
-            case 1:
-                audioSource.Stop();
-                audioSource.PlayOneShot(audioClips[1]);
-                break;
-            case 2:
-                audioSource.Stop();
-                audioSource.PlayOneShot(audioClips[2]);
-                break;
-            case 3:
-                audioSource.Stop();
-                audioSource.PlayOneShot(audioClips[3]);
-                break;
-            case 4:
-                audioSource.Stop();
-                audioSource.PlayOneShot(audioClips[4]);
-                break;
-
-        }
+      
     }
 
     // Update is called once per frame
@@ -141,6 +118,11 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeLevel()
     {
+       
+        /*cameras[currentCamera].SetActive(false);
+        currentCamera++;
+        cameras[currentCamera].SetActive(true);*/
+        currentLevel = sceneNumber - 1;
         switch (currentLevel)
         {
             case 0:
@@ -165,10 +147,7 @@ public class GameManager : MonoBehaviour
                 break;
 
         }
-        /*cameras[currentCamera].SetActive(false);
-        currentCamera++;
-        cameras[currentCamera].SetActive(true);*/
-        currentLevel = sceneNumber - 1;
+
         if (lobby.Count > 0)
         {
             if (textMeshProUGUI != null)

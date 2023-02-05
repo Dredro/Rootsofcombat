@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private EnumPlayerColor lastShotBy;
-    private float health=100;
+    public EnumPlayerColor lastShotBy;
+    public float health=100;
     public bool weaponInHand=false;
 
     [Header("Sort by Level 0-first !!!")]
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         health-= damage;
         if(health<=0)
         {
-            gameManager.PlayerKilled(player, GetComponent<PlayerController>().PlayerColor);
+            gameManager.PlayerKilled(player, gameObject.GetComponent<PlayerController>().PlayerColor);
             
         }
     }

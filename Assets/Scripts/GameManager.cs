@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> SpawnPoints;
     public int currentLevel=0;
 
-    public List<InGamePlayer> lobby=new List<InGamePlayer>();
+    public List<InGamePlayer> lobby=new();
    
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     }
 
     [Header("Weapons")]
-    public List<GameObject> weaponsList = new List<GameObject>();
+    public List<GameObject> weaponsList = new();
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
             {
                 if(i.color==killer)
                 {
+                    i.currentWeapon++;
+                    print(i.color + " got his weapons downgraded");
+                    i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
                     i.frags++;
                 }
             }
@@ -88,10 +91,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void PlayerFellOff()
-    {
 
-    }
     public void PlayerJoined(EnumPlayerColor color,Player player)
     {
         lobby.Add(new InGamePlayer(color,player));
@@ -116,5 +116,15 @@ public class GameManager : MonoBehaviour
     {
         int i = Random.Range(0,SpawnPoints.Count);
         return SpawnPoints[i];
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            print("spadanko"+collision.gameObject.name);
+            Player player=collision.gameObject.GetComponent<Player>();
+            PlayerKilled(player.lastShotBy,player.gameObject.GetComponent<PlayerController>().PlayerColor);
+        }
+            
     }
 }

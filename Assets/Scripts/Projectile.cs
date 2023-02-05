@@ -16,13 +16,13 @@ public class Projectile : MonoBehaviour
     {
         StartCoroutine(DelayCoroutine());
     }
-    public void Set(float force,float damage,EnumPlayerColor player)
+    public void Set(float force, float damage, EnumPlayerColor player)
     {
-        this.player= player;
-        this.force=force;
-        this.damage=damage;
+        this.player = player;
+        this.force = force;
+        this.damage = damage;
     }
-    
+
     IEnumerator DelayCoroutine()
     {
         yield return new WaitForSeconds(0.02f);
@@ -34,13 +34,21 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
     void OnCollisionEnter2D(Collision2D col)
     {
+        switch (ammotype)
+        {
+            case EnumAmmotype.NORMAL:
 
-        if (col.gameObject.layer == 9)
-            col.gameObject.GetComponent<Player>().Hit(new Vector2(force,0),damage,player);
-        Destroy(gameObject);
+                if (col.gameObject.layer == 9)
+                    col.gameObject.GetComponent<Player>().Hit(new Vector2(force, 0), damage, player);
+                Destroy(gameObject);
+                break;
+            case EnumAmmotype.GRENADE:
+
+                break;
+        }
     }
 }

@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 3860034421422384353}
   - component: {fileID: 3087133899369302309}
   - component: {fileID: 7824806476879213335}
-  - component: {fileID: 7876839152992381847}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bullet-laserrifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,8 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 10
-  damage: 15
-  secDeleteAfter: 5
+  damage: 0
+  secDeleteAfter: 2
   ammotype: 0
 --- !u!50 &7824806476879213335
 Rigidbody2D:
@@ -204,29 +203,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &7876839152992381847
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6881376403725146742}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0068315268, y: -0.003415823}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.11505294, y: 0.067231655}
-  m_EdgeRadius: 0

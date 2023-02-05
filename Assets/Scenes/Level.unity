@@ -2313,11 +2313,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2745b493b37304cb6bd32f14c8ee02, type: 3}
---- !u!1 &677504434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5739518987937783703, guid: 3d14c157bae99194eb5e5e3feb029795, type: 3}
-  m_PrefabInstance: {fileID: 2493932259803844797}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &681414275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2773,11 +2768,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2745b493b37304cb6bd32f14c8ee02, type: 3}
---- !u!1 &877634139 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6807443053950558448, guid: 7d68a2d0e5601df468b079cf15d9d3cf, type: 3}
-  m_PrefabInstance: {fileID: 785451952109848547}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &880896407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8625652990006302690, guid: 6f4629a37a76e7345963e11b6cd8e4e0, type: 3}
@@ -2853,7 +2843,7 @@ GameObject:
   - component: {fileID: 974929779}
   - component: {fileID: 974929782}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3692,11 +3682,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8625652990006302690, guid: 6f4629a37a76e7345963e11b6cd8e4e0, type: 3}
   m_PrefabInstance: {fileID: 8625652990521938593}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1572266052 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5009853308854693600, guid: fae744dc573c0b44a9edab78fba0505e, type: 3}
-  m_PrefabInstance: {fileID: 5009853310391258788}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1584410393
 PrefabInstance:
@@ -4713,6 +4698,7 @@ MonoBehaviour:
   - {fileID: 441005328}
   - {fileID: 2012117119}
   currentLevel: 0
+  cameras: []
   weaponsList:
   - {fileID: 1698770551250013818, guid: 841cbc1fde4fc684eaaed04cbf1c9d4b, type: 3}
   - {fileID: 2002793093}

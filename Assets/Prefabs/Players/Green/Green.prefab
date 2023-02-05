@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b05e5011ca15f4291c0c2f6f459e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColor: 2
+  PlayerColor: 1
   spriteBody: {fileID: 520422405844799964}
   rotate: {x: 0, y: 0}
   layerMask:
@@ -226,7 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca9b8d86733bc244ba48e7a5e41f539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastShotBy: 3
+  currentColor: 0
+  health: 100
   weaponInHand: 0
+  imReady: 0
   skinWithHand:
   - {fileID: 21300000, guid: cb768f7618c301e4984de3f6024e0db5, type: 3}
   - {fileID: 21300000, guid: fa588f26d3c0a9943b55febefd47dbce, type: 3}

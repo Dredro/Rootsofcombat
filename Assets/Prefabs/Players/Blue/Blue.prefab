@@ -226,7 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca9b8d86733bc244ba48e7a5e41f539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastShotBy: 1
+  health: 100
   weaponInHand: 0
+  imReady: 0
   skinWithHand:
   - {fileID: 21300000, guid: 39f802a8b0ea34e4b9cc6df07906fecd, type: 3}
   - {fileID: 21300000, guid: a73579a899b66134f96bbc5f16cb92d5, type: 3}

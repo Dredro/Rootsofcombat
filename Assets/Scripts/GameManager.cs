@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
- public class InGamePlayer
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+public class InGamePlayer
 {
 
     public EnumPlayerColor color;
@@ -31,7 +34,9 @@ public class GameManager : MonoBehaviour
     public int currentLevel=0;
 
     public List<InGamePlayer> lobby=new();
-   
+
+    public List<GameObject> cameras;
+    int sceneNumber = 1;
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+       
     }
 
     [Header("Weapons")]
@@ -52,7 +58,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+     
     }
 
     // Update is called once per frame
@@ -63,6 +69,20 @@ public class GameManager : MonoBehaviour
             PrintScoreboard();
         }
     }
+
+    public void ChangeCamera()
+    {
+        /*cameras[currentCamera].SetActive(false);
+        currentCamera++;
+        cameras[currentCamera].SetActive(true);*/
+        if(lobby.Count > 0)
+        {
+            SceneManager.LoadScene(sceneNumber);
+        }
+      
+        
+    }
+
     public void PlayerKilled(EnumPlayerColor killer, EnumPlayerColor victim)
     {
         print(killer + " killed " + victim);
@@ -109,8 +129,6 @@ public class GameManager : MonoBehaviour
         obj.transform.position=brazil.transform.position;
         yield return new WaitForSeconds(time);
         obj.transform.position=ChooseSpawn().transform.position; 
-
-
     }
     private GameObject ChooseSpawn()
     {

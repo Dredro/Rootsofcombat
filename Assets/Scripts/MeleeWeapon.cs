@@ -12,6 +12,7 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
     public AudioClip sound;
     private Animator animator;
     private AudioSource audioSource;
+    public float damage;
     void Start()
     {
         audioSource= GetComponent<AudioSource>();
@@ -61,4 +62,12 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
     {
         this.player = player;
     }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+
+        if (col.gameObject.layer == 9)
+            col.gameObject.GetComponent<Player>().Hit(new Vector2(0, 0), damage, player);
+        
+    }
+
 }

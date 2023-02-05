@@ -8,7 +8,9 @@ public class Player : MonoBehaviour
 {
     public EnumPlayerColor lastShotBy;
     public float health=100;
+    public PlayerController controller;
     public bool weaponInHand=false;
+    public bool imReady = false;
 
     [Header("Sort by Level 0-first !!!")]
     public List<Sprite> skinWithHand;
@@ -16,9 +18,12 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer currentRenderer;
     private GameManager gameManager;
+
+
   
     private void Start()
     {
+        controller= GetComponent<PlayerController>();
        Reset(); 
         gameManager = GameManager.Instance;
        gameManager.PlayerJoined(lastShotBy, this);
@@ -44,12 +49,15 @@ public class Player : MonoBehaviour
 
     public void Hit(Vector2 vel,float damage,EnumPlayerColor player)
     {
-        lastShotBy = player;
-        health-= damage;
-        if(health<=0)
+        if (player != controller.PlayerColor)
         {
-            gameManager.PlayerKilled(player, gameObject.GetComponent<PlayerController>().PlayerColor);
-            
+            lastShotBy = player;
+            health -= damage;
+            if (health <= 0)
+            {
+                gameManager.PlayerKilled(player, gameObject.GetComponent<PlayerController>().PlayerColor);
+
+            }
         }
     }
 

@@ -72,18 +72,23 @@ public class GameManager : MonoBehaviour
         switch (currentLevel)
         {
             case 0:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[0]);
                 break;
             case 1:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[1]);
                 break;
             case 2:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[2]);
                 break;
             case 3:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[3]);
                 break;
             case 4:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[4]);
                 break;
 
@@ -139,18 +144,23 @@ public class GameManager : MonoBehaviour
         switch (currentLevel)
         {
             case 0:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[0]);
                 break;
             case 1:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[1]);
                 break;
             case 2:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[2]);
                 break;
             case 3:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[3]);
                 break;
             case 4:
+                audioSource.Stop();
                 audioSource.PlayOneShot(audioClips[4]);
                 break;
 

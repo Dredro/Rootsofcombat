@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
 
     public ParticleSystem blood;
-  
+    public ParticleSystem bloodDead;
+
     private void Start()
     {
         controller= GetComponent<PlayerController>();
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
             blood.Play();
             if (health <= 0)
             {
+                bloodDead.Play();
                 gameManager.PlayerKilled(player, gameObject.GetComponent<PlayerController>().PlayerColor);
 
             }

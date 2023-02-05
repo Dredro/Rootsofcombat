@@ -83,8 +83,9 @@ public class GameManager : MonoBehaviour
     {
         foreach(InGamePlayer i in lobby)
         {
-            if(i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge() != currentAge && currentLevel<4)
+            if(i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge() > currentAge && currentLevel<4)
             {
+                currentAge = i.player.gameObject.GetComponent<PlayerController>().curWeapon.GetAge();
                 currentLevel++;
                 ChangeLevel();
             }

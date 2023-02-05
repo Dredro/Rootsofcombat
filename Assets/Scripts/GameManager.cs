@@ -213,6 +213,10 @@ public class GameManager : MonoBehaviour
                 {
                     if(i.frags%2==1)
                     i.currentWeapon++;
+                    if (i.currentWeapon > weaponsList.Count)
+                    {
+                        Debug.Log("Wygral" + killer);
+                    }
                     print(i.color + " got his weapons downgraded");
                     i.player.gameObject.GetComponent<PlayerController>().ChangeWeapon(weaponsList[i.currentWeapon]);
                     i.frags++;

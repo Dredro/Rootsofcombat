@@ -1,8 +1,8 @@
-using Unity.PlasticSCM.Editor.WebApi;
+
 using UnityEngine;
-using UnityEngine.UI;
+
 using UnityEngine.InputSystem;
-using UnityEditor.Tilemaps;
+
 using Assets.Scripts;
 
 [RequireComponent(typeof(PlayerInput))]

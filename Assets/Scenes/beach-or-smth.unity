@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform-wood (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1243273982742809556, guid: 14b1525910476ff4db704bf8e57007d7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b1525910476ff4db704bf8e57007d7, type: 3}
 --- !u!4 &311212820 stripped
@@ -309,6 +313,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 223442821648289985, guid: 14b1525910476ff4db704bf8e57007d7, type: 3}
   m_PrefabInstance: {fileID: 311212819}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &311212821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1243273982742809556, guid: 14b1525910476ff4db704bf8e57007d7, type: 3}
+  m_PrefabInstance: {fileID: 311212819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &311212822
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311212821}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 0a0002ded0f46c04b9544bdb9ff05d97, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.006336212, y: 0.02217722}
+  m_SpriteTilingProperty:
+    border: {x: 0.21, y: 0, z: 0.17999999, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.32}
+    newSize: {x: 1.0892417, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0201693, y: 0.21228504}
+  m_EdgeRadius: 0
 --- !u!1 &487299023
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,11 +793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414688, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 12.403733
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414688, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3.557608
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414688, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_LocalScale.z
@@ -818,12 +853,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414689, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_DrawMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414690, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_Name
       value: sand-tile (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3139279804561414690, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436481285953294037, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 0a0002ded0f46c04b9544bdb9ff05d97, type: 2}
     - target: {fileID: 8436481285953294037, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 1.9845972
@@ -849,7 +892,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1190235619}
   - component: {fileID: 1190235618}
-  m_Layer: 0
+  - component: {fileID: 1190235620}
+  m_Layer: 7
   m_Name: platform-wood (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,6 +967,32 @@ Transform:
   m_Father: {fileID: 701917399}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1190235620
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190235617}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 0a0002ded0f46c04b9544bdb9ff05d97, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0136424005, y: 0.01667428}
+  m_SpriteTilingProperty:
+    border: {x: 0.21, y: 0, z: 0.17999999, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.32}
+    newSize: {x: 1.0892417, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0250204, y: 0.18963861}
+  m_EdgeRadius: 0
 --- !u!1 &1272732100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform-wood (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1243273982742809556, guid: 14b1525910476ff4db704bf8e57007d7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b1525910476ff4db704bf8e57007d7, type: 3}
 --- !u!4 &2387594513700469764 stripped
@@ -1144,6 +1218,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 223442821648289985, guid: 14b1525910476ff4db704bf8e57007d7, type: 3}
   m_PrefabInstance: {fileID: 2387594513700469763}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2387594513700469765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1243273982742809556, guid: 14b1525910476ff4db704bf8e57007d7, type: 3}
+  m_PrefabInstance: {fileID: 2387594513700469763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2387594513700469766
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387594513700469765}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 0a0002ded0f46c04b9544bdb9ff05d97, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0030317307, y: 0.015158176}
+  m_SpriteTilingProperty:
+    border: {x: 0.21, y: 0, z: 0.17999999, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.32}
+    newSize: {x: 1.0892417, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0341153, y: 0.20479679}
+  m_EdgeRadius: 0
 --- !u!1001 &3139279806367506971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1157,11 +1262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414688, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 12.403733
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414688, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3.557608
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414688, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_LocalScale.z
@@ -1217,12 +1322,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414689, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_DrawMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3139279804561414690, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_Name
       value: sand-tile (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3139279804561414690, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436481285953294037, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 0a0002ded0f46c04b9544bdb9ff05d97, type: 2}
     - target: {fileID: 8436481285953294037, guid: e4f68a728b3cd7741943510ef8c15809, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 1.9845972

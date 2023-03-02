@@ -177,7 +177,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975738608265361691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34b05e5011ca15f4291c0c2f6f459e41, type: 3}
   m_Name: 
@@ -197,6 +197,7 @@ MonoBehaviour:
   objWeapon: {fileID: 0}
   audioSource: {fileID: 0}
   jumpClip: {fileID: 8300000, guid: f6856a172150bb24a976d4c27cfd3665, type: 3}
+  pauseUi: {fileID: 0}
   left: 0
 --- !u!50 &7374957162318505716
 Rigidbody2D:
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975738608265361691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ca9b8d86733bc244ba48e7a5e41f539, type: 3}
   m_Name: 

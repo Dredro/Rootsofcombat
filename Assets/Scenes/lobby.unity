@@ -3447,6 +3447,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onlinePlayerList: []
   spawnPoints: []
+  bluePrefab: {fileID: 8862500078688332058, guid: 19f0673f1c73be6438475d8bfadc0713, type: 3}
+  greenPrefab: {fileID: 975738608265361691, guid: 81d8d30cd0f7ed842a77714430edf10c, type: 3}
+  redPrefab: {fileID: 975738608265361691, guid: 7087f12b681e2cb4ab6347e215a90cd6, type: 3}
+  yellowPrefab: {fileID: 975738608265361691, guid: e4a5c63f8b6c44e4cb8d635fa01e9bd8, type: 3}
   blueSpriteList:
   - {fileID: 876819068, guid: da0ff4e924aaf604db71b495c606800e, type: 3}
   - {fileID: 21300000, guid: 41b2e7778ad9be84eac8dbf9ed79444d, type: 3}

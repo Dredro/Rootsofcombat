@@ -54,8 +54,26 @@ public class New_GameManager : MonoBehaviour
     {
         int randomNumber;
         randomNumber = Random.Range(0, availablePlayerColors.Count);
+
+        if(availablePlayerColors[randomNumber] == EnumPlayerColor.RED)
+        {
+            player = Instantiate(redPrefab);
+        }
+       /* if (availablePlayerColors[randomNumber] == EnumPlayerColor.GREEN)
+        {
+            player = Instantiate(greenPrefab);
+        }
+        if (availablePlayerColors[randomNumber] == EnumPlayerColor.BLUE)
+        {
+            player = Instantiate(bluePrefab);
+        }
+        if (availablePlayerColors[randomNumber] == EnumPlayerColor.YELLOW)
+        {
+            player = Instantiate(yellowPrefab);
+        }*/
         player.GetComponent<New_Player>().color = availablePlayerColors[randomNumber];
         availablePlayerColors.RemoveAt(randomNumber);
+
     }
     void ReturnPlayerColor(GameObject player)
     {
@@ -65,29 +83,7 @@ public class New_GameManager : MonoBehaviour
             availablePlayerColors.Add(color);
         }
     }
-    void LoadPlayer(GameObject player)
-    {
-        if (player.GetComponent<New_Player>().color == EnumPlayerColor.RED)
-        {
-            player = Instantiate(redPrefab);
-            player.GetComponent<New_Player>().color = EnumPlayerColor.RED;
-        }
-        if (player.GetComponent<New_Player>().color == EnumPlayerColor.BLUE)
-        {
-            player = Instantiate(bluePrefab);
-            player.GetComponent<New_Player>().color = EnumPlayerColor.BLUE;
-        }
-        if (player.GetComponent<New_Player>().color == EnumPlayerColor.GREEN)
-        {
-            player = Instantiate(greenPrefab);
-            player.GetComponent<New_Player>().color= EnumPlayerColor.GREEN;
-        }
-        if (player.GetComponent<New_Player>().color == EnumPlayerColor.YELLOW)
-        {
-            player = Instantiate(yellowPrefab);
-            player.GetComponent<New_Player>().color = EnumPlayerColor.YELLOW;
-        }
-    }
+  
     void UpdatePlayersSprite()
     {
         if (!colorUpdated[currentScene])
@@ -127,7 +123,6 @@ public class New_GameManager : MonoBehaviour
         if (!onlinePlayerList.Contains(playerInput.gameObject))
         {
             SetPlayerColor(playerInput.gameObject);
-            LoadPlayer(playerInput.gameObject);
             onlinePlayerList.Add(playerInput.gameObject);
             ChangePlayerBodySprite(playerInput.gameObject);
             SpawnPlayer(playerInput.gameObject);

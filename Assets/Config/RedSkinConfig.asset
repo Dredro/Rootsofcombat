@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: RedSkinConfig
   m_EditorClassIdentifier: 
   leg:
-    sprites: []
-  sciSprite: []
+    sprites:
+    - {fileID: 257649892, guid: 7202094b4348401448909c9938f40a06, type: 3}
+    - {fileID: -442447326, guid: 7202094b4348401448909c9938f40a06, type: 3}
+    - {fileID: 1368235273, guid: 7202094b4348401448909c9938f40a06, type: 3}
+    - {fileID: -644610646, guid: 7202094b4348401448909c9938f40a06, type: 3}
+  sciSprite:
+  - {fileID: 21300000, guid: 5643cbbc0d2c4d648905ae024eef9f6f, type: 3}
   nowSprite: []
   revSprite: []
   midSprite: []
   neaSprite: []
-  sciSpriteWh: []
+  sciSpriteWh:
+  - {fileID: 21300000, guid: 0ac4936c3e32d584bbdb70b845ee727c, type: 3}
   nowSpriteWh: []
   revSpriteWh: []
   midSpriteWh: []

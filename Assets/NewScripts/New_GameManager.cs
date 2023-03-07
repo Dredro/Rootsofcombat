@@ -12,8 +12,7 @@ public class New_GameManager : MonoBehaviour
     public EnumAge currentAge = new EnumAge();
 
     private List<Transform> spawnPoints;
-    private int currentScene = 0;
-   
+
 
     private void Start()
     {
@@ -26,7 +25,10 @@ public class New_GameManager : MonoBehaviour
     {
         UpdatePlayersSprite();
     }
-   
+    private void LateUpdate()
+    {
+        UpdatePlayersSprite();
+    }
     #region ColorManagment
 
     public SkinConfigure blueSkinConfigure;
@@ -80,19 +82,15 @@ public class New_GameManager : MonoBehaviour
             availablePlayerColors.Add(color);
         }
     }
-  
+
+   
     void UpdatePlayersSprite()
     {
-
-        if (!colorUpdated[currentScene])
+        foreach (GameObject player in onlinePlayerList)
         {
-            currentScene = SceneManager.GetActiveScene().buildIndex;
-            foreach (GameObject player in onlinePlayerList)
-            {
-                ChangePlayerBodySprite(player);
-            }
-            colorUpdated[currentScene] = true;
+            ChangePlayerBodySprite(player);
         }
+        
     }
     void ChangePlayerBodySprite(GameObject player)
     {

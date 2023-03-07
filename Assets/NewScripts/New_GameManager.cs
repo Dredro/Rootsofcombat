@@ -9,13 +9,15 @@ public class New_GameManager : MonoBehaviour
 {
     public List<GameObject> onlinePlayerList;
 
-    public List<Transform> spawnPoints;
+    public EnumAge currentAge = new EnumAge();
 
+    private List<Transform> spawnPoints;
     private int currentScene = 0;
    
 
     private void Start()
     {
+        currentAge = EnumAge.SCI;
         ResetAvailablePlayerColors();
         FindSpawnPoints();
         colorUpdated = new bool[SceneManager.sceneCount];
@@ -24,18 +26,13 @@ public class New_GameManager : MonoBehaviour
     {
         UpdatePlayersSprite();
     }
-
+   
     #region ColorManagment
 
-    public GameObject bluePrefab;
-    public GameObject greenPrefab;
-    public GameObject redPrefab;
-    public GameObject yellowPrefab;
-
-    public List<Sprite> blueSpriteList;
-    public List<Sprite> greenSpriteList;
-    public List<Sprite> redSpriteList;
-    public List<Sprite> yellowSpriteList;
+    public SkinConfigure blueSkinConfigure;
+    public SkinConfigure redSkinConfigure;
+    public SkinConfigure greenSkinConfigure;
+    public SkinConfigure yellowSkinConfigure;
 
     public List<EnumPlayerColor> availablePlayerColors;
 
@@ -54,23 +51,23 @@ public class New_GameManager : MonoBehaviour
     {
         int randomNumber;
         randomNumber = Random.Range(0, availablePlayerColors.Count);
-
+        
         if(availablePlayerColors[randomNumber] == EnumPlayerColor.RED)
         {
-            player = Instantiate(redPrefab);
+            player.GetComponent<New_Player>().leg = redSkinConfigure.leg;
         }
-       /* if (availablePlayerColors[randomNumber] == EnumPlayerColor.GREEN)
+        if (availablePlayerColors[randomNumber] == EnumPlayerColor.GREEN)
         {
-            player = Instantiate(greenPrefab);
+            player.GetComponent<New_Player>().leg = greenSkinConfigure.leg;
         }
         if (availablePlayerColors[randomNumber] == EnumPlayerColor.BLUE)
         {
-            player = Instantiate(bluePrefab);
+            player.GetComponent<New_Player>().leg = redSkinConfigure.leg;
         }
         if (availablePlayerColors[randomNumber] == EnumPlayerColor.YELLOW)
         {
-            player = Instantiate(yellowPrefab);
-        }*/
+           player.GetComponent<New_Player>().leg = yellowSkinConfigure.leg;
+        }
         player.GetComponent<New_Player>().color = availablePlayerColors[randomNumber];
         availablePlayerColors.RemoveAt(randomNumber);
 
@@ -86,6 +83,7 @@ public class New_GameManager : MonoBehaviour
   
     void UpdatePlayersSprite()
     {
+
         if (!colorUpdated[currentScene])
         {
             currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -101,21 +99,43 @@ public class New_GameManager : MonoBehaviour
         SpriteRenderer playerRenderer = player.transform.Find("body").GetComponent<SpriteRenderer>();
         if (player.GetComponent<New_Player>().color == EnumPlayerColor.RED)
         {
-            playerRenderer.sprite = redSpriteList[currentScene];
+            ChangeSkin(playerRenderer,redSkinConfigure);
         }
         if (player.GetComponent<New_Player>().color == EnumPlayerColor.BLUE)
         {
-            playerRenderer.sprite = blueSpriteList[currentScene];
+            ChangeSkin(playerRenderer, blueSkinConfigure);
         }
         if (player.GetComponent<New_Player>().color == EnumPlayerColor.GREEN)
         {
-            playerRenderer.sprite = greenSpriteList[currentScene];
+            ChangeSkin(playerRenderer, greenSkinConfigure);
         }
         if (player.GetComponent<New_Player>().color == EnumPlayerColor.YELLOW)
         {
-            playerRenderer.sprite = yellowSpriteList[currentScene];
+            ChangeSkin(playerRenderer, yellowSkinConfigure);
         }
     }
+    private void ChangeSkin(SpriteRenderer playerRenderer, SkinConfigure colorSkinConfigure)
+    {
+        switch (currentAge)
+        {
+            case EnumAge.SCI:
+                playerRenderer.sprite = colorSkinConfigure.sciSprite[Random.Range(0, colorSkinConfigure.sciSprite.Count)];
+                break;
+            case EnumAge.NOW:
+                playerRenderer.sprite = colorSkinConfigure.nowSprite[Random.Range(0, colorSkinConfigure.nowSprite.Count)];
+                break;
+            case EnumAge.NEA:
+                playerRenderer.sprite = colorSkinConfigure.neaSprite[Random.Range(0, colorSkinConfigure.neaSprite.Count)];
+                break;
+            case EnumAge.REV:
+                playerRenderer.sprite = colorSkinConfigure.revSprite[Random.Range(0, colorSkinConfigure.revSprite.Count)];
+                break;
+            case EnumAge.MID:
+                playerRenderer.sprite = colorSkinConfigure.midSprite[Random.Range(0, colorSkinConfigure.midSprite.Count)];
+                break;
+        }
+    }
+
     #endregion
     #region OnlinePlayerListUpdate
     public void OnPlayerJoined(PlayerInput playerInput)

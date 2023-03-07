@@ -3365,7 +3365,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 1
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -3446,39 +3446,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlinePlayerList: []
-  spawnPoints: []
-  bluePrefab: {fileID: 8862500078688332058, guid: 19f0673f1c73be6438475d8bfadc0713, type: 3}
-  greenPrefab: {fileID: 975738608265361691, guid: 81d8d30cd0f7ed842a77714430edf10c, type: 3}
-  redPrefab: {fileID: 975738608265361691, guid: 7087f12b681e2cb4ab6347e215a90cd6, type: 3}
-  yellowPrefab: {fileID: 975738608265361691, guid: e4a5c63f8b6c44e4cb8d635fa01e9bd8, type: 3}
-  blueSpriteList:
-  - {fileID: 876819068, guid: da0ff4e924aaf604db71b495c606800e, type: 3}
-  - {fileID: 21300000, guid: 41b2e7778ad9be84eac8dbf9ed79444d, type: 3}
-  - {fileID: 21300000, guid: 187e7a552be83e14d8dc9985ffcc748d, type: 3}
-  - {fileID: 21300000, guid: 209c559d73c31654584868b6473dffb9, type: 3}
-  - {fileID: 21300000, guid: e28ec5d8cc1494c489fcd184a76be4b1, type: 3}
-  - {fileID: 21300000, guid: af1223504da292e4286c146cdb7fe372, type: 3}
-  greenSpriteList:
-  - {fileID: -2003319572, guid: 4c1078a31bd2072439cba86937d373ab, type: 3}
-  - {fileID: 21300000, guid: bc3d9c31590903448935f9c40a5c732b, type: 3}
-  - {fileID: 21300000, guid: bf67cece3a9729e4398aa04bf8b35b0c, type: 3}
-  - {fileID: 21300000, guid: e2ac961fd79a75248a49b92c6ae794dc, type: 3}
-  - {fileID: 21300000, guid: f1d7ac2337a147a4ba7173a6a95ea5d4, type: 3}
-  - {fileID: 21300000, guid: fe2b729f90103f2439b8e915fcba0615, type: 3}
-  redSpriteList:
-  - {fileID: 257649892, guid: 7202094b4348401448909c9938f40a06, type: 3}
-  - {fileID: 21300000, guid: 560d7024b80a39247a97819b0468a2ff, type: 3}
-  - {fileID: 21300000, guid: 66be9dba5ac3b7f4c828ec8ebf0a0c78, type: 3}
-  - {fileID: 21300000, guid: c9db0667a91b616468a6ca8909c0673d, type: 3}
-  - {fileID: 21300000, guid: 0dfb36434d5195b40b18c50a46ee45e5, type: 3}
-  - {fileID: 21300000, guid: 0ac4936c3e32d584bbdb70b845ee727c, type: 3}
-  yellowSpriteList:
-  - {fileID: -1237282788, guid: 2deb4e2bf47c620408a02faf20fd69f9, type: 3}
-  - {fileID: 21300000, guid: 4b92be54c3f92e545a799e6d176a00cf, type: 3}
-  - {fileID: 21300000, guid: b106dabbb7f46d94a9d90723810cabf5, type: 3}
-  - {fileID: 21300000, guid: caf3e4ab9fdeffd4ba60fe6396c60f08, type: 3}
-  - {fileID: 21300000, guid: f88d4efe3e8cd4d448403018104c1aa8, type: 3}
-  - {fileID: 21300000, guid: 55a17424714096545aa37cc9469b3fc2, type: 3}
+  currentAge: 0
+  blueSkinConfigure: {fileID: 11400000, guid: 06d1be2ae0fbf334da087288fffb22c4, type: 2}
+  redSkinConfigure: {fileID: 11400000, guid: 06d1be2ae0fbf334da087288fffb22c4, type: 2}
+  greenSkinConfigure: {fileID: 11400000, guid: 06d1be2ae0fbf334da087288fffb22c4, type: 2}
+  yellowSkinConfigure: {fileID: 11400000, guid: 06d1be2ae0fbf334da087288fffb22c4, type: 2}
   availablePlayerColors: 
 --- !u!224 &2275415556882168413
 RectTransform:

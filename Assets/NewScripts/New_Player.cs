@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -36,6 +37,7 @@ public class New_Player : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
         ReadInputActions(playerInput);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -43,6 +45,23 @@ public class New_Player : MonoBehaviour
         UpdateInputValues();
         Move();
     }
+    private void LateUpdate()
+    {
+        UpdateSkin();
+    }
+
+    #region SkinUpdate
+    private SpriteRenderer spriteRenderer;
+    public Skins leg;
+      public void UpdateSkin()
+    {
+            string spriteName = spriteRenderer.sprite.name;
+            spriteName = spriteName.Replace("blue-walk_", "");
+            int spriteNr = int.Parse(spriteName);
+            spriteRenderer.sprite = leg.sprites[spriteNr];
+        
+    }
+    #endregion
 
     #region ReadInputs
     void ReadInputActions(PlayerInput playerInput)

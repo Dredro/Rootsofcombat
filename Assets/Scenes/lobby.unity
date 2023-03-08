@@ -3450,7 +3450,7 @@ MonoBehaviour:
   blueSkinConfigure: {fileID: 11400000, guid: 06d1be2ae0fbf334da087288fffb22c4, type: 2}
   redSkinConfigure: {fileID: 11400000, guid: d230cee63dd70614393890452ced64a0, type: 2}
   greenSkinConfigure: {fileID: 11400000, guid: cb12a8b07a9f4994d8d2657998defea3, type: 2}
-  yellowSkinConfigure: {fileID: 11400000, guid: 06d1be2ae0fbf334da087288fffb22c4, type: 2}
+  yellowSkinConfigure: {fileID: 11400000, guid: bb32d0983240cb44780bb322646eb6df, type: 2}
   availablePlayerColors: 
 --- !u!224 &2275415556882168413
 RectTransform:

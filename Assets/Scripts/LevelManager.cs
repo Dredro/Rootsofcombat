@@ -18,26 +18,26 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(lobby.buildIndex);
     }
             
-    public void LoadLevel(Enums.Age age)
+    public void LoadLevel(Age age)
     {
        switch(age) 
         {
-            case Enums.Age.Now:
+            case Age.Now:
                 SceneManager.LoadScene(sceneNow[Random.Range(0,sceneNow.Count)].buildIndex);
                 break;
-            case Enums.Age.Rev:
+            case Age.Rev:
                 SceneManager.LoadScene(sceneRev[Random.Range(0, sceneRev.Count)].buildIndex);
                 break;
             
-            case Enums.Age.Sci:
+            case Age.Sci:
                 SceneManager.LoadScene(sceneSci[Random.Range(0, sceneRev.Count)].buildIndex);
                 break;
 
-            case Enums.Age.Nea:
+            case Age.Nea:
                 SceneManager.LoadScene(sceneNea[Random.Range(0, sceneNea.Count)].buildIndex);
                 break;
 
-            case Enums.Age.Med:
+            case Age.Med:
                 SceneManager.LoadScene(sceneMed[Random.Range(0, sceneMed.Count)].buildIndex);
                 break;
         }

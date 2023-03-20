@@ -5,15 +5,35 @@ using UnityEngine;
 public class Enums : MonoBehaviour
 {
     public enum Age{
-        SCI, NOW, REV, MID, NEA
+        Sci,
+        Now,
+        Rev,
+        Mid,
+        Nea
     }
 
-    public enum Colour{
-        RED, YELLOW, GREEN, BLUE
+    public enum Color{
+        Red,
+        Yellow,
+        Green,
+        Blue
     }
 
     public enum Weapon_Type {
-        RANGED, MELEE
+        Ranged,
+        Melee
+    }
+
+    public enum Fire_Type {
+        Semi,
+        Auto,
+        Charged
+    }
+
+    public enum Ammo_Type{
+        Normal,
+        Grenade,
+        Explosive
     }
 
 }

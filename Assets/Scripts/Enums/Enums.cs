@@ -3,7 +3,7 @@
         Sci,
         Now,
         Rev,
-        Mid,
+        Med,
         Nea
     }
 

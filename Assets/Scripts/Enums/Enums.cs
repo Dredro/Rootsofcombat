@@ -8,7 +8,7 @@ public class Enums : MonoBehaviour
         Sci,
         Now,
         Rev,
-        Mid,
+        Med,
         Nea
     }
 

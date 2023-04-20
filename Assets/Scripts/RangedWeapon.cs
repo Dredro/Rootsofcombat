@@ -55,18 +55,11 @@ public class RangedWeapon : MonoBehaviour, IWeapon
         curAmmo--;
         float randomSpread = Random.Range(-spread, spread);
         GameObject projectileObject;
-        projectileObject = Instantiate(projectile, barrel.transform.position, Quaternion.Euler(Vector3.forward * randomSpread));
+        projectileObject = Instantiate(projectile, barrel.transform.position, barrel.transform.rotation);
         projectileObject.SetActive(true);
         projectileObject.transform.eulerAngles = transform.eulerAngles;
         projectileObject.GetComponent<Projectile>().Set(projectileSpeed, damage,player);
-        if (GetComponentInParent<PlayerController>().left == false)
-        {
-            projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(new Vector2(projectileSpeed, randomSpread), transform.eulerAngles.z);
-        }
-        else
-        {
-            projectileObject.GetComponent<Rigidbody2D>().velocity = Rotate(Rotate(new Vector2(projectileSpeed, randomSpread), -transform.eulerAngles.z), 180);
-        }
+        
     }
 
     public void Fire1()

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 using Assets.Scripts;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
 
     // Physics Private
-    private bool isGround;
+    private bool mGrounded;
     private Rigidbody2D rbody2D;
     private float jumpTimer;
     private Collider2D coll;
@@ -59,7 +60,10 @@ public class PlayerController : MonoBehaviour
 
     //Player
     private Player player;
-
+    private bool mFacingRight = true; 
+    private Vector3 mVelocity = Vector3.zero;
+    [FormerlySerializedAs("mJumpForce")] [SerializeField] private float mJumpForce = 400f;	
+    [FormerlySerializedAs("mMovementSmoothing")] [Range(0, .3f)] [SerializeField] private float mMovementSmoothing = .05f;
     //Math
     float a;
     int i = 1;
@@ -76,6 +80,7 @@ public class PlayerController : MonoBehaviour
         rbody2D = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         player = GetComponent<Player>();
+        GetActions();
     }
 
     private void Update()
@@ -85,9 +90,6 @@ public class PlayerController : MonoBehaviour
 
         Descent();
         Fire();
-
-
-
         //DEBUG
         if (Input.GetKeyDown("backspace"))
         {
@@ -102,14 +104,6 @@ public class PlayerController : MonoBehaviour
     }
     private void OnUpdate()
     {
-        if (playerInput != null)
-        { // Read actions from Input Manager
-            moveAction = playerInput.actions["move"];
-            fireAction = playerInput.actions["fire"];
-            jumpAction = playerInput.actions["jump"];
-            rotateAction = playerInput.actions["look"];
-      
-        }
         // Set value for Input Actions values
         move = moveAction.ReadValue<Vector2>();
         jump = jumpAction.ReadValue<float>();
@@ -117,6 +111,15 @@ public class PlayerController : MonoBehaviour
         rotate = rotateAction.ReadValue<Vector2>();
        
 
+    }
+
+    private void GetActions()
+    {
+        // Read actions from Input Manager
+        moveAction = playerInput.actions["move"];
+        fireAction = playerInput.actions["fire"];
+        jumpAction = playerInput.actions["jump"];
+        rotateAction = playerInput.actions["look"];
     }
 
     private void RotateWeapon()
@@ -152,40 +155,44 @@ public class PlayerController : MonoBehaviour
             player.weaponInHand = false;
         }
     }
-    private void Move()
+
+    public void Move()
     {
-        animator.SetFloat("speed", Mathf.Abs(move.x));
-        rbody2D.velocity = new Vector2(move.x * moveSpeed, rbody2D.velocity.y);
-        if (move.x > 0 || rotate.x>0)
-        {
-            Quaternion quaternion = new Quaternion(0, 0, 0, 0);
-            transform.localRotation = quaternion;
-            left = false;
-            a = 0;
-            i = 1;
-        }
-        if (move.x < 0 || rotate.x<0)
-        {
-            left= true;
-            Quaternion quaternion = new Quaternion(0, 180, 0, 0);
-            transform.localRotation = quaternion;
-            a = 180;
-            i = -1;
-            // spriteBody.flipX = false;
-            // spriteRenderer.flipX = false;
-           // objWeapon.GetComponent<SpriteRenderer>().flipX = true;
-        }
+        // Move the character by finding the target velocity
+            Vector3 targetVelocity = new Vector2(move.x * moveSpeed, rbody2D.velocity.y);
+            // And then smoothing it out and applying it to the character
+            rbody2D.velocity = Vector3.SmoothDamp(rbody2D.velocity, targetVelocity, ref mVelocity, mMovementSmoothing);
+            animator.SetFloat("speed", Mathf.Abs(move.x*moveSpeed));
+            // If the input is moving the player right and the player is facing left...
+            if (move.x > 0 && !mFacingRight)
+            {
+                // ... flip the player.
+                Flip();
+            }
+            // Otherwise if the input is moving the player left and the player is facing right...
+            else if (move.x < 0 && mFacingRight)
+            {
+                // ... flip the player.
+                Flip();
+            }
+    }
 
-
+    private void Flip()
+    {
+        mFacingRight = !mFacingRight;
+       
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
     private void GroundCheck()
     {
-        isGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.05f, layerMask);
+        mGrounded = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), 0.05f, layerMask);
     }
 
     private void Jump()
     {
-        if ((isGround) && (jump == 1) && (Time.time > jumpTimer))
+        if ((mGrounded) && (jump == 1) && (Time.time > jumpTimer))
         {
             audioSource.PlayOneShot(jumpClip);
             rbody2D.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);

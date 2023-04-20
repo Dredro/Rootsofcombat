@@ -191,12 +191,15 @@ MonoBehaviour:
   permableLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  moveSpeed: 2.5
+  moveSpeed: 4
   jumpHeight: 5
   jumpDelay: 0.5
   objWeapon: {fileID: 0}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2597353543321208061}
   jumpClip: {fileID: 8300000, guid: f6856a172150bb24a976d4c27cfd3665, type: 3}
+  pauseUi: {fileID: 0}
+  mJumpForce: 5
+  mMovementSmoothing: 0.035
   left: 0
 --- !u!50 &7374957162318505716
 Rigidbody2D:

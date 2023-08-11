@@ -1739,6 +1739,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1121804142578487188, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545741, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: weaponsList.Array.size
       value: 15
@@ -1845,7 +1849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: m_JoinBehavior
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545743, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: m_JoinAction.m_UseReference
@@ -1872,6 +1876,14 @@ PrefabInstance:
       value: Join
       objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545840, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: players.Array.data[0]
+      value: 
+      objectReference: {fileID: 975738608265361691, guid: 7201a6991ebc81b47bacb245394d086d, type: 3}
+    - target: {fileID: 2115618641191545840, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: players.Array.data[1]
+      value: 
+      objectReference: {fileID: 975738608265361691, guid: a1d33a1dc8e8c0847878a5d8d01e0879, type: 3}
+    - target: {fileID: 2115618641191545840, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: players.Array.data[2]
       value: 
       objectReference: {fileID: 975738608265361691, guid: cc722afa9c8d6264c9fa5330d6b2c0cb, type: 3}
@@ -1879,6 +1891,14 @@ PrefabInstance:
       propertyPath: players.Array.data[3]
       value: 
       objectReference: {fileID: 975738608265361691, guid: 632f252f5c63b1a4494cdee296fb297f, type: 3}
+    - target: {fileID: 2115618641191545840, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: spawnPoints.Array.data[1].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115618641191545840, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
+      propertyPath: spawnPoints.Array.data[3].x
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2115618641191545841, guid: 0ac4a0f9072b69a4f9c1fd3ef66385ed, type: 3}
       propertyPath: m_Name
       value: GameManager
